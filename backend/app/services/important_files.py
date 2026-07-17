@@ -111,7 +111,7 @@ _RULES: list[tuple[int, str, object]] = [
      and _ext(p) in {".py", ".sql", ".ts", ".js"}),
 ]
 
-_MAX_FILES = 20
+_MAX_FILES = 12
 _MIN_SCORE = 50
 
 

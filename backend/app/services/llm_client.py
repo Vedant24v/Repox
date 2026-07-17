@@ -113,7 +113,7 @@ def call_llm(
             {"role": "user", "content": user_prompt},
         ],
         temperature=0.25,
-        max_tokens=4096,
+        max_tokens=2048,
     )
     if json_mode:
         kwargs["response_format"] = {"type": "json_object"}
@@ -125,7 +125,7 @@ def call_llm(
             content = resp.choices[0].message.content or ""
             return content
         except RateLimitError as exc:
-            wait = (attempt + 1) * 20  # 20s, 40s, 60s, 80s, 100s
+            wait = (attempt + 1) * 10  # 10s, 20s, 30s, 40s, 50s
             logger.warning(
                 "Groq rate-limit (attempt %d/%d) — waiting %ds. %s",
                 attempt + 1, max_retries, wait, exc,

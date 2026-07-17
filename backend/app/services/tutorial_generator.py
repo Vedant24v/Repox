@@ -572,17 +572,17 @@ async def generate_all_sections(
     stage_callback: Callable[[str], None] | None = None,
 ) -> dict[str, str]:
     """
-    Orchestrate all 9 section generators sequentially.
+    Orchestrate all 9 section generators in parallel batches of 3.
 
     Parameters
     ----------
     stage_callback
-        Optional callable(stage_label) called before each section
-        to update DB progress. Receives strings like "generating_explanations (1/9)".
+        Optional callable(stage_label) called before each batch
+        to update DB progress.
 
     Returns
     -------
-    dict mapping section_name → markdown_content
+    dict mapping section_name -> markdown_content
     """
     results: dict[str, str] = {}
 
@@ -591,94 +591,48 @@ async def generate_all_sections(
             stage_callback(f"generating_explanations ({idx}/9)")
         logger.info("Generating section %d/9: %s", idx, name)
 
-    # ── 1 ── Start Here
-    _notify(1, "start_here")
-    results["01_start_here"] = await generate_start_here(
-        plan=plan, tech=tech, level_config=level_config, project_id=project_id
-    )
-
-    # ── 2 ── Product Overview
-    _notify(2, "product_overview")
-    results["02_product_overview"] = await generate_product_overview(
-        product_description=product_description,
-        tech=tech,
-        file_summaries=file_summaries,
-        level_config=level_config,
-        project_id=project_id,
-    )
-
-    # ── 3 ── Tech Stack
-    _notify(3, "tech_stack")
-    results["03_tech_stack"] = await generate_tech_stack_explanation(
-        tech=tech,
-        file_summaries=file_summaries,
-        level_config=level_config,
-        project_id=project_id,
-    )
-
-    # ── 4 ── Architecture
-    _notify(4, "architecture")
-    results["04_architecture"] = await generate_architecture(
-        tech=tech,
-        relationships=relationships,
-        file_summaries=file_summaries,
-        level_config=level_config,
-        project_id=project_id,
-    )
-
-    # ── 5 ── Component Guide
-    _notify(5, "component_guide")
-    results["05_component_guide"] = await generate_component_guide(
-        file_summaries=file_summaries,
-        relationships=relationships,
-        level_config=level_config,
-        project_id=project_id,
-    )
-
-    # ── 6 ── Main User Flow
-    _notify(6, "main_user_flow")
-    results["06_main_user_flow"] = await generate_main_user_flow(
-        important_features=important_features,
-        relationships=relationships,
-        file_summaries=file_summaries,
-        level_config=level_config,
-        project_id=project_id,
-    )
-
-    # ── 7 ── Repo Guide
-    _notify(7, "repo_guide")
-    results["07_repo_guide"] = await generate_repo_guide(
-        inventory=inventory,
-        important_files=important_files,
-        level_config=level_config,
-        project_id=project_id,
-    )
-
-    # ── 8 ── How to Run
-    _notify(8, "how_to_run")
+    # Pre-read files needed by section 8 (how_to_run)
     readme = _read_file_safe(repo_root / "README.md") or _read_file_safe(repo_root / "readme.md")
     package_json = _read_file_safe(repo_root / "package.json")
     requirements = _read_file_safe(repo_root / "requirements.txt")
     dockerfiles = _find_dockerfiles(repo_root)
 
-    results["08_how_to_run"] = await generate_how_to_run(
-        readme_content=readme,
-        package_json=package_json,
-        requirements_txt=requirements,
-        dockerfiles=dockerfiles,
-        level_config=level_config,
-        project_id=project_id,
+    # ── Batch 1: sections 1-3 (independent) ──────────────────────────────
+    _notify(1, "start_here, product_overview, tech_stack")
+    batch1 = await asyncio.gather(
+        generate_start_here(plan=plan, tech=tech, level_config=level_config, project_id=project_id),
+        generate_product_overview(product_description=product_description, tech=tech, file_summaries=file_summaries, level_config=level_config, project_id=project_id),
+        generate_tech_stack_explanation(tech=tech, file_summaries=file_summaries, level_config=level_config, project_id=project_id),
     )
+    results["01_start_here"] = batch1[0]
+    results["02_product_overview"] = batch1[1]
+    results["03_tech_stack"] = batch1[2]
 
-    # ── 9 ── Unknowns & Risks
-    _notify(9, "unknowns_and_risks")
-    all_analysis = {"plan": plan, "tech": tech}
-    results["09_unknowns_and_risks"] = await generate_unknowns_and_risks(
-        all_analysis_json=all_analysis,
-        secrets_report=secrets_report,
-        level_config=level_config,
-        project_id=project_id,
+    # ── Batch 2: sections 4-6 (independent) ──────────────────────────────
+    _notify(4, "architecture, component_guide, main_user_flow")
+    await asyncio.sleep(2)  # courtesy pause between batches
+    batch2 = await asyncio.gather(
+        generate_architecture(tech=tech, relationships=relationships, file_summaries=file_summaries, level_config=level_config, project_id=project_id),
+        generate_component_guide(file_summaries=file_summaries, relationships=relationships, level_config=level_config, project_id=project_id),
+        generate_main_user_flow(important_features=important_features, relationships=relationships, file_summaries=file_summaries, level_config=level_config, project_id=project_id),
     )
+    results["04_architecture"] = batch2[0]
+    results["05_component_guide"] = batch2[1]
+    results["06_main_user_flow"] = batch2[2]
+
+    # ── Batch 3: sections 7-9 (independent) ──────────────────────────────
+    _notify(7, "repo_guide, how_to_run, unknowns_and_risks")
+    await asyncio.sleep(2)  # courtesy pause between batches
+    all_analysis = {"plan": plan, "tech": tech}
+    batch3 = await asyncio.gather(
+        generate_repo_guide(inventory=inventory, important_files=important_files, level_config=level_config, project_id=project_id),
+        generate_how_to_run(readme_content=readme, package_json=package_json, requirements_txt=requirements, dockerfiles=dockerfiles, level_config=level_config, project_id=project_id),
+        generate_unknowns_and_risks(all_analysis_json=all_analysis, secrets_report=secrets_report, level_config=level_config, project_id=project_id),
+    )
+    results["07_repo_guide"] = batch3[0]
+    results["08_how_to_run"] = batch3[1]
+    results["09_unknowns_and_risks"] = batch3[2]
 
     logger.info("All 9 sections generated for project %s", project_id)
     return results
+

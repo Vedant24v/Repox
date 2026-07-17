@@ -19,9 +19,9 @@ from app.services.llm_client import call_llm
 logger = logging.getLogger(__name__)
 
 _MAX_FILE_CHARS: int = 3_000
-_SEMAPHORE_LIMIT: int = 1
+_SEMAPHORE_LIMIT: int = 3
 # Small inter-call courtesy delay to stay inside Groq's RPM window
-_INTER_CALL_SLEEP: float = 6.0
+_INTER_CALL_SLEEP: float = 2.0
 
 _SYSTEM_PROMPT = """You are a senior software engineer analysing a source file from a repository.
 
