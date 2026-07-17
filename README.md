@@ -61,7 +61,7 @@ Detection is heuristic and covers common project markers and source patterns, in
 
 - Python 3.11+
 - Node.js 18+
-- A Groq API key for LLM-generated tutorial prose (static analysis still works without one)
+- A Gemini API key (recommended) or a Groq API key for LLM-generated tutorial prose (static analysis still works without one)
 
 ### Backend
 
@@ -98,7 +98,7 @@ Copy the repository-level [`.env.example`](.env.example) into `backend/.env` and
 1. Create a new Render **Web Service** from this repository.
 2. Set the service root directory to `backend`.
 3. Use build command `pip install -r requirements.txt` and start command `uvicorn app.main:app --host 0.0.0.0 --port $PORT`.
-4. Add `GROQ_API_KEY`, `GROQ_MODEL` (optional), `STORAGE_DIR=storage`, and `CORS_ORIGINS` (the Vercel URL).
+4. Add `GEMINI_API_KEY` (recommended) and `GEMINI_MODEL=gemini-1.5-flash` or `GROQ_API_KEY`, `GROQ_MODEL` (optional), `STORAGE_DIR=storage`, and `CORS_ORIGINS` (the Vercel URL).
 5. Verify `<render-url>/health` returns `{"status":"ok"}`.
 
 ### Frontend on Vercel

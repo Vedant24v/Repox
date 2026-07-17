@@ -10,6 +10,10 @@ services:
         sync: false
       - key: GROQ_MODEL
         value: llama-3.3-70b-versatile
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-1.5-flash
       - key: STORAGE_DIR
         value: storage
       - key: CORS_ORIGINS
