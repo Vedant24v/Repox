@@ -1,0 +1,1307 @@
+{
+  "tech": {
+    "languages": [
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "Java",
+      "Java/Kotlin"
+    ],
+    "frontend_frameworks": [
+      "Next.js",
+      "React"
+    ],
+    "backend_frameworks": [
+      "tRPC"
+    ],
+    "databases": [
+      "Prisma",
+      "@prisma/client"
+    ],
+    "auth_libraries": [
+      "NextAuth.js"
+    ],
+    "ai_llm_libraries": [
+      "Qdrant",
+      "OpenAI",
+      "Groq",
+      "HuggingFace Transformers",
+      "HuggingFace"
+    ],
+    "cloud_config": [],
+    "docker": true,
+    "package_managers": [
+      "npm"
+    ],
+    "testing_frameworks": [],
+    "external_apis_detected": [
+      "/api/py/upload",
+      "/api/py/collections/${projectId}",
+      "/api/py/query",
+      "/api/py/documents/${projectId}/${documentId}"
+    ]
+  },
+  "important_files": [
+    {
+      "path": "src/server/routers/auth.ts",
+      "reason_important": "Route definitions file",
+      "score": 170,
+      "language": "TypeScript",
+      "category": "other"
+    },
+    {
+      "path": "src/app/api/auth/[...nextauth]/route.ts",
+      "reason_important": "Authentication logic",
+      "score": 165,
+      "language": "TypeScript",
+      "category": "backend_route"
+    },
+    {
+      "path": "mcp-server/index.ts",
+      "reason_important": "Application entry point",
+      "score": 100,
+      "language": "TypeScript",
+      "category": "other"
+    },
+    {
+      "path": "src/app/(auth)/layout.tsx",
+      "reason_important": "Next.js / framework layout root",
+      "score": 90,
+      "language": "TypeScript (JSX)",
+      "category": "frontend_component"
+    },
+    {
+      "path": "src/app/dashboard/layout.tsx",
+      "reason_important": "Next.js / framework layout root",
+      "score": 90,
+      "language": "TypeScript (JSX)",
+      "category": "frontend_component"
+    },
+    {
+      "path": "src/app/layout.tsx",
+      "reason_important": "Next.js / framework layout root",
+      "score": 90,
+      "language": "TypeScript (JSX)",
+      "category": "frontend_component"
+    },
+    {
+      "path": "src/lib/auth.config.ts",
+      "reason_important": "Authentication logic",
+      "score": 85,
+      "language": "TypeScript",
+      "category": "other"
+    },
+    {
+      "path": "src/lib/auth.ts",
+      "reason_important": "Authentication logic",
+      "score": 85,
+      "language": "TypeScript",
+      "category": "other"
+    },
+    {
+      "path": "src/server/routers/_app.ts",
+      "reason_important": "Route definitions file",
+      "score": 85,
+      "language": "TypeScript",
+      "category": "other"
+    },
+    {
+      "path": "src/server/routers/chat.ts",
+      "reason_important": "Route definitions file",
+      "score": 85,
+      "language": "TypeScript",
+      "category": "other"
+    },
+    {
+      "path": "src/server/routers/document.ts",
+      "reason_important": "Route definitions file",
+      "score": 85,
+      "language": "TypeScript",
+      "category": "other"
+    },
+    {
+      "path": "src/server/routers/project.ts",
+      "reason_important": "Route definitions file",
+      "score": 85,
+      "language": "TypeScript",
+      "category": "other"
+    }
+  ],
+  "relationships": [
+    {
+      "source": "mcp-server/index.ts",
+      "relationship": "imports",
+      "target": "@modelcontextprotocol/sdk/server/mcp.js",
+      "evidence": "import { McpServer } from \"@modelcontextprotocol/sdk/server/mcp.js\";"
+    },
+    {
+      "source": "mcp-server/index.ts",
+      "relationship": "imports",
+      "target": "@modelcontextprotocol/sdk/server/stdio.js",
+      "evidence": "import { StdioServerTransport } from \"@modelcontextprotocol/sdk/server/stdio.js\";"
+    },
+    {
+      "source": "mcp-server/index.ts",
+      "relationship": "imports",
+      "target": "zod",
+      "evidence": "import { z } from \"zod\";"
+    },
+    {
+      "source": "mcp-server/index.ts",
+      "relationship": "calls_api",
+      "target": "${APP_URL}/api/py/query",
+      "evidence": "const response = await fetch(`${APP_URL}/api/py/query`, {"
+    },
+    {
+      "source": "next.config.ts",
+      "relationship": "imports",
+      "target": "next",
+      "evidence": "import type { NextConfig } from \"next\";"
+    },
+    {
+      "source": "src/app/(auth)/layout.tsx",
+      "relationship": "imports",
+      "target": "lucide-react",
+      "evidence": "import { HardHat } from \"lucide-react\";"
+    },
+    {
+      "source": "src/app/(auth)/login/page.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import { useState, useEffect, Suspense } from \"react\";"
+    },
+    {
+      "source": "src/app/(auth)/login/page.tsx",
+      "relationship": "imports",
+      "target": "next-auth/react",
+      "evidence": "import { signIn } from \"next-auth/react\";"
+    },
+    {
+      "source": "src/app/(auth)/login/page.tsx",
+      "relationship": "imports",
+      "target": "next/navigation",
+      "evidence": "import { useSearchParams } from \"next/navigation\";"
+    },
+    {
+      "source": "src/app/(auth)/login/page.tsx",
+      "relationship": "imports",
+      "target": "next/link",
+      "evidence": "import Link from \"next/link\";"
+    },
+    {
+      "source": "src/app/(auth)/login/page.tsx",
+      "relationship": "imports",
+      "target": "lucide-react",
+      "evidence": "import { Loader2, LogIn } from \"lucide-react\";"
+    },
+    {
+      "source": "src/app/(auth)/login/page.tsx",
+      "relationship": "imports",
+      "target": "sonner",
+      "evidence": "import { toast } from \"sonner\";"
+    },
+    {
+      "source": "src/app/(auth)/login/page.tsx",
+      "relationship": "imports",
+      "target": "@/components/ui/button",
+      "evidence": "import { Button } from \"@/components/ui/button\";"
+    },
+    {
+      "source": "src/app/(auth)/login/page.tsx",
+      "relationship": "imports",
+      "target": "@/components/ui/input",
+      "evidence": "import { Input } from \"@/components/ui/input\";"
+    },
+    {
+      "source": "src/app/(auth)/login/page.tsx",
+      "relationship": "imports",
+      "target": "@/components/ui/label",
+      "evidence": "import { Label } from \"@/components/ui/label\";"
+    },
+    {
+      "source": "src/app/(auth)/register/page.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import { useState } from \"react\";"
+    },
+    {
+      "source": "src/app/(auth)/register/page.tsx",
+      "relationship": "imports",
+      "target": "next-auth/react",
+      "evidence": "import { signIn } from \"next-auth/react\";"
+    },
+    {
+      "source": "src/app/(auth)/register/page.tsx",
+      "relationship": "imports",
+      "target": "next/link",
+      "evidence": "import Link from \"next/link\";"
+    },
+    {
+      "source": "src/app/(auth)/register/page.tsx",
+      "relationship": "imports",
+      "target": "lucide-react",
+      "evidence": "import { Loader2, UserPlus } from \"lucide-react\";"
+    },
+    {
+      "source": "src/app/(auth)/register/page.tsx",
+      "relationship": "imports",
+      "target": "sonner",
+      "evidence": "import { toast } from \"sonner\";"
+    },
+    {
+      "source": "src/app/(auth)/register/page.tsx",
+      "relationship": "imports",
+      "target": "@/lib/trpc",
+      "evidence": "import { trpc } from \"@/lib/trpc\";"
+    },
+    {
+      "source": "src/app/(auth)/register/page.tsx",
+      "relationship": "imports",
+      "target": "@/components/ui/button",
+      "evidence": "import { Button } from \"@/components/ui/button\";"
+    },
+    {
+      "source": "src/app/(auth)/register/page.tsx",
+      "relationship": "imports",
+      "target": "@/components/ui/input",
+      "evidence": "import { Input } from \"@/components/ui/input\";"
+    },
+    {
+      "source": "src/app/(auth)/register/page.tsx",
+      "relationship": "imports",
+      "target": "@/components/ui/label",
+      "evidence": "import { Label } from \"@/components/ui/label\";"
+    },
+    {
+      "source": "src/app/api/auth/[...nextauth]/route.ts",
+      "relationship": "imports",
+      "target": "@/lib/auth",
+      "evidence": "import { handlers } from \"@/lib/auth\";"
+    },
+    {
+      "source": "src/app/api/py/collections/[projectId]/route.ts",
+      "relationship": "imports",
+      "target": "next/server",
+      "evidence": "import { NextResponse } from \"next/server\";"
+    },
+    {
+      "source": "src/app/api/py/collections/[projectId]/route.ts",
+      "relationship": "imports",
+      "target": "@/lib/rag-service",
+      "evidence": "import { deleteProjectCollection } from \"@/lib/rag-service\";"
+    },
+    {
+      "source": "src/app/api/py/documents/[projectId]/[documentId]/route.ts",
+      "relationship": "imports",
+      "target": "next/server",
+      "evidence": "import { NextResponse } from \"next/server\";"
+    },
+    {
+      "source": "src/app/api/py/documents/[projectId]/[documentId]/route.ts",
+      "relationship": "imports",
+      "target": "@/lib/rag-service",
+      "evidence": "import { deleteDocumentVectors } from \"@/lib/rag-service\";"
+    },
+    {
+      "source": "src/app/api/py/query/route.ts",
+      "relationship": "imports",
+      "target": "next/server",
+      "evidence": "import { NextResponse } from \"next/server\";"
+    },
+    {
+      "source": "src/app/api/py/query/route.ts",
+      "relationship": "imports",
+      "target": "@/lib/rag-service",
+      "evidence": "import { queryRagService } from \"@/lib/rag-service\";"
+    },
+    {
+      "source": "src/app/api/py/upload/route.ts",
+      "relationship": "imports",
+      "target": "next/server",
+      "evidence": "import { NextResponse } from \"next/server\";"
+    },
+    {
+      "source": "src/app/api/py/upload/route.ts",
+      "relationship": "imports",
+      "target": "@/lib/rag-service",
+      "evidence": "import { uploadToRagService } from \"@/lib/rag-service\";"
+    },
+    {
+      "source": "src/app/api/trpc/[trpc]/route.ts",
+      "relationship": "imports",
+      "target": "@trpc/server/adapters/fetch",
+      "evidence": "import { fetchRequestHandler } from \"@trpc/server/adapters/fetch\";"
+    },
+    {
+      "source": "src/app/api/trpc/[trpc]/route.ts",
+      "relationship": "imports",
+      "target": "@/server/routers/_app",
+      "evidence": "import { appRouter } from \"@/server/routers/_app\";"
+    },
+    {
+      "source": "src/app/api/trpc/[trpc]/route.ts",
+      "relationship": "imports",
+      "target": "@/server/trpc",
+      "evidence": "import { createContext } from \"@/server/trpc\";"
+    },
+    {
+      "source": "src/app/dashboard/error.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import { useEffect } from \"react\";"
+    },
+    {
+      "source": "src/app/dashboard/error.tsx",
+      "relationship": "imports",
+      "target": "lucide-react",
+      "evidence": "import { AlertCircle } from \"lucide-react\";"
+    },
+    {
+      "source": "src/app/dashboard/layout.tsx",
+      "relationship": "imports",
+      "target": "@/components/sidebar",
+      "evidence": "import { Sidebar } from \"@/components/sidebar\";"
+    },
+    {
+      "source": "src/app/dashboard/page.tsx",
+      "relationship": "imports",
+      "target": "next/link",
+      "evidence": "import Link from \"next/link\";"
+    },
+    {
+      "source": "src/app/dashboard/page.tsx",
+      "relationship": "imports",
+      "target": "@/lib/trpc",
+      "evidence": "import { trpc } from \"@/lib/trpc\";"
+    },
+    {
+      "source": "src/app/dashboard/page.tsx",
+      "relationship": "imports",
+      "target": "@/components/empty-state",
+      "evidence": "import { EmptyState } from \"@/components/empty-state\";"
+    },
+    {
+      "source": "src/app/dashboard/page.tsx",
+      "relationship": "imports",
+      "target": "@/components/loading-skeletons",
+      "evidence": "import { ProjectListSkeleton } from \"@/components/loading-skeletons\";"
+    },
+    {
+      "source": "src/app/dashboard/page.tsx",
+      "relationship": "imports",
+      "target": "@/components/ui/badge",
+      "evidence": "import { Badge } from \"@/components/ui/badge\";"
+    },
+    {
+      "source": "src/app/dashboard/projects/[projectId]/chat/[sessionId]/page.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import { use, useRef, useEffect, useState } from \"react\";"
+    },
+    {
+      "source": "src/app/dashboard/projects/[projectId]/chat/[sessionId]/page.tsx",
+      "relationship": "imports",
+      "target": "next/link",
+      "evidence": "import Link from \"next/link\";"
+    },
+    {
+      "source": "src/app/dashboard/projects/[projectId]/chat/[sessionId]/page.tsx",
+      "relationship": "imports",
+      "target": "@/lib/trpc",
+      "evidence": "import { trpc } from \"@/lib/trpc\";"
+    },
+    {
+      "source": "src/app/dashboard/projects/[projectId]/chat/[sessionId]/page.tsx",
+      "relationship": "imports",
+      "target": "sonner",
+      "evidence": "import { toast } from \"sonner\";"
+    },
+    {
+      "source": "src/app/dashboard/projects/[projectId]/chat/[sessionId]/page.tsx",
+      "relationship": "imports",
+      "target": "@/lib/utils",
+      "evidence": "import { cn } from \"@/lib/utils\";"
+    },
+    {
+      "source": "src/app/dashboard/projects/[projectId]/chat/[sessionId]/page.tsx",
+      "relationship": "imports",
+      "target": "@/components/loading-skeletons",
+      "evidence": "import { ChatMessageSkeleton } from \"@/components/loading-skeletons\";"
+    },
+    {
+      "source": "src/app/dashboard/projects/[projectId]/page.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import { use } from \"react\";"
+    },
+    {
+      "source": "src/app/dashboard/projects/[projectId]/page.tsx",
+      "relationship": "imports",
+      "target": "next/link",
+      "evidence": "import Link from \"next/link\";"
+    },
+    {
+      "source": "src/app/dashboard/projects/[projectId]/page.tsx",
+      "relationship": "imports",
+      "target": "next/navigation",
+      "evidence": "import { useRouter } from \"next/navigation\";"
+    },
+    {
+      "source": "src/app/dashboard/projects/[projectId]/page.tsx",
+      "relationship": "imports",
+      "target": "@/lib/trpc",
+      "evidence": "import { trpc } from \"@/lib/trpc\";"
+    },
+    {
+      "source": "src/app/dashboard/projects/[projectId]/page.tsx",
+      "relationship": "imports",
+      "target": "sonner",
+      "evidence": "import { toast } from \"sonner\";"
+    },
+    {
+      "source": "src/app/dashboard/projects/[projectId]/page.tsx",
+      "relationship": "imports",
+      "target": "@/components/ui/badge",
+      "evidence": "import { Badge } from \"@/components/ui/badge\";"
+    },
+    {
+      "source": "src/app/dashboard/projects/[projectId]/page.tsx",
+      "relationship": "imports",
+      "target": "@/components/document-manager",
+      "evidence": "import { DocumentManager } from \"@/components/document-manager\";"
+    },
+    {
+      "source": "src/app/dashboard/projects/[projectId]/page.tsx",
+      "relationship": "imports",
+      "target": "@/components/chat-session-list",
+      "evidence": "import { ChatSessionList } from \"@/components/chat-session-list\";"
+    },
+    {
+      "source": "src/app/dashboard/projects/new/page.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import { useState } from \"react\";"
+    },
+    {
+      "source": "src/app/dashboard/projects/new/page.tsx",
+      "relationship": "imports",
+      "target": "next/navigation",
+      "evidence": "import { useRouter } from \"next/navigation\";"
+    },
+    {
+      "source": "src/app/dashboard/projects/new/page.tsx",
+      "relationship": "imports",
+      "target": "lucide-react",
+      "evidence": "import { Building2, ArrowLeft } from \"lucide-react\";"
+    },
+    {
+      "source": "src/app/dashboard/projects/new/page.tsx",
+      "relationship": "imports",
+      "target": "next/link",
+      "evidence": "import Link from \"next/link\";"
+    },
+    {
+      "source": "src/app/dashboard/projects/new/page.tsx",
+      "relationship": "imports",
+      "target": "@/lib/trpc",
+      "evidence": "import { trpc } from \"@/lib/trpc\";"
+    },
+    {
+      "source": "src/app/dashboard/projects/new/page.tsx",
+      "relationship": "imports",
+      "target": "sonner",
+      "evidence": "import { toast } from \"sonner\";"
+    },
+    {
+      "source": "src/app/layout.tsx",
+      "relationship": "imports",
+      "target": "next",
+      "evidence": "import type { Metadata } from \"next\";"
+    },
+    {
+      "source": "src/app/layout.tsx",
+      "relationship": "imports",
+      "target": "next/font/google",
+      "evidence": "import { Inter } from \"next/font/google\";"
+    },
+    {
+      "source": "src/app/layout.tsx",
+      "relationship": "imports",
+      "target": "@/providers/providers",
+      "evidence": "import { Providers } from \"@/providers/providers\";"
+    },
+    {
+      "source": "src/app/not-found.tsx",
+      "relationship": "imports",
+      "target": "next/link",
+      "evidence": "import Link from \"next/link\";"
+    },
+    {
+      "source": "src/app/not-found.tsx",
+      "relationship": "imports",
+      "target": "lucide-react",
+      "evidence": "import { Building2, ArrowLeft } from \"lucide-react\";"
+    },
+    {
+      "source": "src/app/page.tsx",
+      "relationship": "imports",
+      "target": "next/link",
+      "evidence": "import Link from \"next/link\";"
+    },
+    {
+      "source": "src/components/chat-session-list.tsx",
+      "relationship": "imports",
+      "target": "next/link",
+      "evidence": "import Link from \"next/link\";"
+    },
+    {
+      "source": "src/components/chat-session-list.tsx",
+      "relationship": "imports",
+      "target": "next/navigation",
+      "evidence": "import { useRouter } from \"next/navigation\";"
+    },
+    {
+      "source": "src/components/chat-session-list.tsx",
+      "relationship": "imports",
+      "target": "lucide-react",
+      "evidence": "import { MessageSquare, Plus, Trash2 } from \"lucide-react\";"
+    },
+    {
+      "source": "src/components/chat-session-list.tsx",
+      "relationship": "imports",
+      "target": "@/lib/trpc",
+      "evidence": "import { trpc } from \"@/lib/trpc\";"
+    },
+    {
+      "source": "src/components/chat-session-list.tsx",
+      "relationship": "imports",
+      "target": "sonner",
+      "evidence": "import { toast } from \"sonner\";"
+    },
+    {
+      "source": "src/components/chat-session-list.tsx",
+      "relationship": "imports",
+      "target": "@/components/empty-state",
+      "evidence": "import { EmptyState } from \"@/components/empty-state\";"
+    },
+    {
+      "source": "src/components/ChatPanel.jsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import React, { useState, useRef, useEffect } from 'react';"
+    },
+    {
+      "source": "src/components/ChatPanel.jsx",
+      "relationship": "imports",
+      "target": "lucide-react",
+      "evidence": "import { Send, Cpu, User, ChevronDown, Database, Loader2, Paperclip, BookOpen, Sliders, FileCheck, Wrench } from 'lucide-react';"
+    },
+    {
+      "source": "src/components/ChatPanel.jsx",
+      "relationship": "imports",
+      "target": "../api",
+      "evidence": "import { queryDocument, uploadPDF } from '../api';"
+    },
+    {
+      "source": "src/components/document-manager.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import { useCallback } from \"react\";"
+    },
+    {
+      "source": "src/components/document-manager.tsx",
+      "relationship": "imports",
+      "target": "@/lib/trpc",
+      "evidence": "import { trpc } from \"@/lib/trpc\";"
+    },
+    {
+      "source": "src/components/document-manager.tsx",
+      "relationship": "imports",
+      "target": "sonner",
+      "evidence": "import { toast } from \"sonner\";"
+    },
+    {
+      "source": "src/components/document-manager.tsx",
+      "relationship": "imports",
+      "target": "@/components/empty-state",
+      "evidence": "import { EmptyState } from \"@/components/empty-state\";"
+    },
+    {
+      "source": "src/components/document-manager.tsx",
+      "relationship": "imports",
+      "target": "@/components/loading-skeletons",
+      "evidence": "import { DocumentListSkeleton } from \"@/components/loading-skeletons\";"
+    },
+    {
+      "source": "src/components/document-manager.tsx",
+      "relationship": "imports",
+      "target": "@/components/ui/badge",
+      "evidence": "import { Badge } from \"@/components/ui/badge\";"
+    },
+    {
+      "source": "src/components/empty-state.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import { type ReactNode } from \"react\";"
+    },
+    {
+      "source": "src/components/empty-state.tsx",
+      "relationship": "imports",
+      "target": "lucide-react",
+      "evidence": "import { type LucideIcon } from \"lucide-react\";"
+    },
+    {
+      "source": "src/components/error-boundary.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import { useEffect, type ReactNode } from \"react\";"
+    },
+    {
+      "source": "src/components/loading-skeletons.tsx",
+      "relationship": "imports",
+      "target": "@/components/ui/skeleton",
+      "evidence": "import { Skeleton } from \"@/components/ui/skeleton\";"
+    },
+    {
+      "source": "src/components/sidebar.tsx",
+      "relationship": "imports",
+      "target": "next/link",
+      "evidence": "import Link from \"next/link\";"
+    },
+    {
+      "source": "src/components/sidebar.tsx",
+      "relationship": "imports",
+      "target": "next/navigation",
+      "evidence": "import { usePathname } from \"next/navigation\";"
+    },
+    {
+      "source": "src/components/sidebar.tsx",
+      "relationship": "imports",
+      "target": "next-auth/react",
+      "evidence": "import { useSession, signOut } from \"next-auth/react\";"
+    },
+    {
+      "source": "src/components/sidebar.tsx",
+      "relationship": "imports",
+      "target": "@/lib/utils",
+      "evidence": "import { cn } from \"@/lib/utils\";"
+    },
+    {
+      "source": "src/components/sidebar.tsx",
+      "relationship": "imports",
+      "target": "@/lib/trpc",
+      "evidence": "import { trpc } from \"@/lib/trpc\";"
+    },
+    {
+      "source": "src/components/ui/avatar.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import * as React from \"react\";"
+    },
+    {
+      "source": "src/components/ui/avatar.tsx",
+      "relationship": "imports",
+      "target": "@/lib/utils",
+      "evidence": "import { cn } from \"@/lib/utils\";"
+    },
+    {
+      "source": "src/components/ui/badge.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import * as React from \"react\";"
+    },
+    {
+      "source": "src/components/ui/badge.tsx",
+      "relationship": "imports",
+      "target": "class-variance-authority",
+      "evidence": "import { cva, type VariantProps } from \"class-variance-authority\";"
+    },
+    {
+      "source": "src/components/ui/badge.tsx",
+      "relationship": "imports",
+      "target": "@/lib/utils",
+      "evidence": "import { cn } from \"@/lib/utils\";"
+    },
+    {
+      "source": "src/components/ui/button.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import * as React from \"react\";"
+    },
+    {
+      "source": "src/components/ui/button.tsx",
+      "relationship": "imports",
+      "target": "class-variance-authority",
+      "evidence": "import { cva, type VariantProps } from \"class-variance-authority\";"
+    },
+    {
+      "source": "src/components/ui/button.tsx",
+      "relationship": "imports",
+      "target": "@/lib/utils",
+      "evidence": "import { cn } from \"@/lib/utils\";"
+    },
+    {
+      "source": "src/components/ui/card.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import * as React from \"react\";"
+    },
+    {
+      "source": "src/components/ui/card.tsx",
+      "relationship": "imports",
+      "target": "@/lib/utils",
+      "evidence": "import { cn } from \"@/lib/utils\";"
+    },
+    {
+      "source": "src/components/ui/demo.jsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import React from \"react\";"
+    },
+    {
+      "source": "src/components/ui/demo.jsx",
+      "relationship": "imports",
+      "target": "./gradient-tracing",
+      "evidence": "import { GradientTracing } from \"./gradient-tracing\";"
+    },
+    {
+      "source": "src/components/ui/demo.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import React from \"react\";"
+    },
+    {
+      "source": "src/components/ui/demo.tsx",
+      "relationship": "imports",
+      "target": "./gradient-tracing",
+      "evidence": "import { GradientTracing } from \"./gradient-tracing\";"
+    },
+    {
+      "source": "src/components/ui/dialog.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import * as React from \"react\";"
+    },
+    {
+      "source": "src/components/ui/dialog.tsx",
+      "relationship": "imports",
+      "target": "@/lib/utils",
+      "evidence": "import { cn } from \"@/lib/utils\";"
+    },
+    {
+      "source": "src/components/ui/dialog.tsx",
+      "relationship": "imports",
+      "target": "lucide-react",
+      "evidence": "import { X } from \"lucide-react\";"
+    },
+    {
+      "source": "src/components/ui/dropdown-menu.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import * as React from \"react\";"
+    },
+    {
+      "source": "src/components/ui/dropdown-menu.tsx",
+      "relationship": "imports",
+      "target": "@/lib/utils",
+      "evidence": "import { cn } from \"@/lib/utils\";"
+    },
+    {
+      "source": "src/components/ui/gradient-tracing.jsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import React from \"react\""
+    },
+    {
+      "source": "src/components/ui/gradient-tracing.jsx",
+      "relationship": "imports",
+      "target": "framer-motion",
+      "evidence": "import { motion } from \"framer-motion\""
+    },
+    {
+      "source": "src/components/ui/gradient-tracing.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import React from \"react\""
+    },
+    {
+      "source": "src/components/ui/gradient-tracing.tsx",
+      "relationship": "imports",
+      "target": "framer-motion",
+      "evidence": "import { motion } from \"framer-motion\""
+    },
+    {
+      "source": "src/components/ui/gradient-tracing.tsx",
+      "relationship": "imports",
+      "target": "next/image",
+      "evidence": "// import Image from \"next/image\" // Commented out as this is a Vite SPA project, not Next.js"
+    },
+    {
+      "source": "src/components/ui/input.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import * as React from \"react\";"
+    },
+    {
+      "source": "src/components/ui/input.tsx",
+      "relationship": "imports",
+      "target": "@/lib/utils",
+      "evidence": "import { cn } from \"@/lib/utils\";"
+    },
+    {
+      "source": "src/components/ui/label.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import * as React from \"react\";"
+    },
+    {
+      "source": "src/components/ui/label.tsx",
+      "relationship": "imports",
+      "target": "class-variance-authority",
+      "evidence": "import { cva, type VariantProps } from \"class-variance-authority\";"
+    },
+    {
+      "source": "src/components/ui/label.tsx",
+      "relationship": "imports",
+      "target": "@/lib/utils",
+      "evidence": "import { cn } from \"@/lib/utils\";"
+    },
+    {
+      "source": "src/components/ui/scroll-area.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import * as React from \"react\";"
+    },
+    {
+      "source": "src/components/ui/scroll-area.tsx",
+      "relationship": "imports",
+      "target": "@/lib/utils",
+      "evidence": "import { cn } from \"@/lib/utils\";"
+    },
+    {
+      "source": "src/components/ui/sheet.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import * as React from \"react\";"
+    },
+    {
+      "source": "src/components/ui/sheet.tsx",
+      "relationship": "imports",
+      "target": "@/lib/utils",
+      "evidence": "import { cn } from \"@/lib/utils\";"
+    },
+    {
+      "source": "src/components/ui/sheet.tsx",
+      "relationship": "imports",
+      "target": "lucide-react",
+      "evidence": "import { X } from \"lucide-react\";"
+    },
+    {
+      "source": "src/components/ui/skeleton.tsx",
+      "relationship": "imports",
+      "target": "@/lib/utils",
+      "evidence": "import { cn } from \"@/lib/utils\";"
+    },
+    {
+      "source": "src/components/ui/tabs.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import * as React from \"react\";"
+    },
+    {
+      "source": "src/components/ui/tabs.tsx",
+      "relationship": "imports",
+      "target": "@/lib/utils",
+      "evidence": "import { cn } from \"@/lib/utils\";"
+    },
+    {
+      "source": "src/components/ui/textarea.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import * as React from \"react\";"
+    },
+    {
+      "source": "src/components/ui/textarea.tsx",
+      "relationship": "imports",
+      "target": "@/lib/utils",
+      "evidence": "import { cn } from \"@/lib/utils\";"
+    },
+    {
+      "source": "src/components/UploadPanel.jsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import React, { useState, useRef } from 'react';"
+    },
+    {
+      "source": "src/components/UploadPanel.jsx",
+      "relationship": "imports",
+      "target": "lucide-react",
+      "evidence": "import { UploadCloud, FileText, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';"
+    },
+    {
+      "source": "src/components/UploadPanel.jsx",
+      "relationship": "imports",
+      "target": "../api",
+      "evidence": "import { uploadPDF } from '../api';"
+    },
+    {
+      "source": "src/lib/auth.config.ts",
+      "relationship": "imports",
+      "target": "next-auth",
+      "evidence": "import type { NextAuthConfig } from \"next-auth\";"
+    },
+    {
+      "source": "src/lib/auth.ts",
+      "relationship": "imports",
+      "target": "next-auth",
+      "evidence": "import NextAuth from \"next-auth\";"
+    },
+    {
+      "source": "src/lib/auth.ts",
+      "relationship": "imports",
+      "target": "next-auth/providers/credentials",
+      "evidence": "import Credentials from \"next-auth/providers/credentials\";"
+    },
+    {
+      "source": "src/lib/auth.ts",
+      "relationship": "imports",
+      "target": "bcryptjs",
+      "evidence": "import { compare } from \"bcryptjs\";"
+    },
+    {
+      "source": "src/lib/auth.ts",
+      "relationship": "imports",
+      "target": "@/lib/prisma",
+      "evidence": "import { prisma } from \"@/lib/prisma\";"
+    },
+    {
+      "source": "src/lib/auth.ts",
+      "relationship": "imports",
+      "target": "./auth.config",
+      "evidence": "import { authConfig } from \"./auth.config\";"
+    },
+    {
+      "source": "src/lib/prisma.ts",
+      "relationship": "imports",
+      "target": "@prisma/client",
+      "evidence": "import { PrismaClient } from \"@prisma/client\";"
+    },
+    {
+      "source": "src/lib/rag-service.ts",
+      "relationship": "imports",
+      "target": "crypto",
+      "evidence": "import { randomUUID } from \"crypto\";"
+    },
+    {
+      "source": "src/lib/rag-service.ts",
+      "relationship": "imports",
+      "target": "@qdrant/js-client-rest",
+      "evidence": "import { QdrantClient } from \"@qdrant/js-client-rest\";"
+    },
+    {
+      "source": "src/lib/rag-service.ts",
+      "relationship": "imports",
+      "target": "pdf-parse",
+      "evidence": "import { PDFParse } from \"pdf-parse\";"
+    },
+    {
+      "source": "src/lib/trpc.tsx",
+      "relationship": "imports",
+      "target": "@tanstack/react-query",
+      "evidence": "import { QueryClient, QueryClientProvider } from \"@tanstack/react-query\";"
+    },
+    {
+      "source": "src/lib/trpc.tsx",
+      "relationship": "imports",
+      "target": "@trpc/client",
+      "evidence": "import { httpBatchLink } from \"@trpc/client\";"
+    },
+    {
+      "source": "src/lib/trpc.tsx",
+      "relationship": "imports",
+      "target": "@trpc/react-query",
+      "evidence": "import { createTRPCReact } from \"@trpc/react-query\";"
+    },
+    {
+      "source": "src/lib/trpc.tsx",
+      "relationship": "imports",
+      "target": "react",
+      "evidence": "import { useState } from \"react\";"
+    },
+    {
+      "source": "src/lib/trpc.tsx",
+      "relationship": "imports",
+      "target": "superjson",
+      "evidence": "import superjson from \"superjson\";"
+    },
+    {
+      "source": "src/lib/trpc.tsx",
+      "relationship": "imports",
+      "target": "@/server/routers/_app",
+      "evidence": "import type { AppRouter } from \"@/server/routers/_app\";"
+    },
+    {
+      "source": "src/lib/utils.ts",
+      "relationship": "imports",
+      "target": "clsx",
+      "evidence": "import { type ClassValue, clsx } from \"clsx\";"
+    },
+    {
+      "source": "src/lib/utils.ts",
+      "relationship": "imports",
+      "target": "tailwind-merge",
+      "evidence": "import { twMerge } from \"tailwind-merge\";"
+    },
+    {
+      "source": "src/middleware.ts",
+      "relationship": "imports",
+      "target": "next-auth",
+      "evidence": "import NextAuth from \"next-auth\";"
+    },
+    {
+      "source": "src/middleware.ts",
+      "relationship": "imports",
+      "target": "@/lib/auth.config",
+      "evidence": "import { authConfig } from \"@/lib/auth.config\";"
+    },
+    {
+      "source": "src/providers/providers.tsx",
+      "relationship": "imports",
+      "target": "@/providers/session-provider",
+      "evidence": "import { SessionProvider } from \"@/providers/session-provider\";"
+    },
+    {
+      "source": "src/providers/providers.tsx",
+      "relationship": "imports",
+      "target": "@/lib/trpc",
+      "evidence": "import { TRPCProvider } from \"@/lib/trpc\";"
+    },
+    {
+      "source": "src/providers/providers.tsx",
+      "relationship": "imports",
+      "target": "sonner",
+      "evidence": "import { Toaster } from \"sonner\";"
+    },
+    {
+      "source": "src/providers/session-provider.tsx",
+      "relationship": "imports",
+      "target": "next-auth/react",
+      "evidence": "import { SessionProvider as NextAuthSessionProvider } from \"next-auth/react\";"
+    },
+    {
+      "source": "src/server/rag-api-service.ts",
+      "relationship": "imports",
+      "target": "next/headers",
+      "evidence": "import { headers } from \"next/headers\";"
+    },
+    {
+      "source": "src/server/rag-api-service.ts",
+      "relationship": "calls_api",
+      "target": "/api/py/upload",
+      "evidence": "const response = await nextApiFetch(\"/api/py/upload\", {"
+    },
+    {
+      "source": "src/server/rag-api-service.ts",
+      "relationship": "calls_api",
+      "target": "/api/py/query",
+      "evidence": "const response = await nextApiFetch(\"/api/py/query\", {"
+    },
+    {
+      "source": "src/server/rag-api-service.ts",
+      "relationship": "calls_api",
+      "target": "/api/py/documents/${projectId}/${documentId}",
+      "evidence": "const response = await nextApiFetch(\n    `/api/py/documents/${projectId}/${documentId}`,"
+    },
+    {
+      "source": "src/server/rag-api-service.ts",
+      "relationship": "calls_api",
+      "target": "/api/py/collections/${projectId}",
+      "evidence": "const response = await nextApiFetch(\n    `/api/py/collections/${projectId}`,"
+    },
+    {
+      "source": "src/server/routers/_app.ts",
+      "relationship": "imports",
+      "target": "../trpc",
+      "evidence": "import { router } from \"../trpc\";"
+    },
+    {
+      "source": "src/server/routers/_app.ts",
+      "relationship": "imports",
+      "target": "./auth",
+      "evidence": "import { authRouter } from \"./auth\";"
+    },
+    {
+      "source": "src/server/routers/_app.ts",
+      "relationship": "imports",
+      "target": "./project",
+      "evidence": "import { projectRouter } from \"./project\";"
+    },
+    {
+      "source": "src/server/routers/_app.ts",
+      "relationship": "imports",
+      "target": "./document",
+      "evidence": "import { documentRouter } from \"./document\";"
+    },
+    {
+      "source": "src/server/routers/_app.ts",
+      "relationship": "imports",
+      "target": "./chat",
+      "evidence": "import { chatRouter } from \"./chat\";"
+    },
+    {
+      "source": "src/server/routers/auth.ts",
+      "relationship": "imports",
+      "target": "zod",
+      "evidence": "import { z } from \"zod\";"
+    },
+    {
+      "source": "src/server/routers/auth.ts",
+      "relationship": "imports",
+      "target": "bcryptjs",
+      "evidence": "import { hash } from \"bcryptjs\";"
+    },
+    {
+      "source": "src/server/routers/auth.ts",
+      "relationship": "imports",
+      "target": "@trpc/server",
+      "evidence": "import { TRPCError } from \"@trpc/server\";"
+    },
+    {
+      "source": "src/server/routers/auth.ts",
+      "relationship": "imports",
+      "target": "../trpc",
+      "evidence": "import { publicProcedure, router } from \"../trpc\";"
+    },
+    {
+      "source": "src/server/routers/chat.ts",
+      "relationship": "imports",
+      "target": "zod",
+      "evidence": "import { z } from \"zod\";"
+    },
+    {
+      "source": "src/server/routers/chat.ts",
+      "relationship": "imports",
+      "target": "@trpc/server",
+      "evidence": "import { TRPCError } from \"@trpc/server\";"
+    },
+    {
+      "source": "src/server/routers/chat.ts",
+      "relationship": "imports",
+      "target": "../trpc",
+      "evidence": "import { protectedProcedure, router } from \"../trpc\";"
+    },
+    {
+      "source": "src/server/routers/chat.ts",
+      "relationship": "imports",
+      "target": "../rag-api-service",
+      "evidence": "import { queryRagApi } from \"../rag-api-service\";"
+    },
+    {
+      "source": "src/server/routers/document.ts",
+      "relationship": "imports",
+      "target": "zod",
+      "evidence": "import { z } from \"zod\";"
+    },
+    {
+      "source": "src/server/routers/document.ts",
+      "relationship": "imports",
+      "target": "@trpc/server",
+      "evidence": "import { TRPCError } from \"@trpc/server\";"
+    },
+    {
+      "source": "src/server/routers/document.ts",
+      "relationship": "imports",
+      "target": "../trpc",
+      "evidence": "import { protectedProcedure, router } from \"../trpc\";"
+    },
+    {
+      "source": "src/server/routers/project.ts",
+      "relationship": "imports",
+      "target": "zod",
+      "evidence": "import { z } from \"zod\";"
+    },
+    {
+      "source": "src/server/routers/project.ts",
+      "relationship": "imports",
+      "target": "@trpc/server",
+      "evidence": "import { TRPCError } from \"@trpc/server\";"
+    },
+    {
+      "source": "src/server/routers/project.ts",
+      "relationship": "imports",
+      "target": "../trpc",
+      "evidence": "import { protectedProcedure, router } from \"../trpc\";"
+    },
+    {
+      "source": "src/server/routers/project.ts",
+      "relationship": "imports",
+      "target": "../rag-api-service",
+      "evidence": "import { deleteProjectCollection } from \"../rag-api-service\";"
+    },
+    {
+      "source": "src/server/trpc.ts",
+      "relationship": "imports",
+      "target": "@trpc/server",
+      "evidence": "import { initTRPC, TRPCError } from \"@trpc/server\";"
+    },
+    {
+      "source": "src/server/trpc.ts",
+      "relationship": "imports",
+      "target": "superjson",
+      "evidence": "import superjson from \"superjson\";"
+    },
+    {
+      "source": "src/server/trpc.ts",
+      "relationship": "imports",
+      "target": "@/lib/auth",
+      "evidence": "import { auth } from \"@/lib/auth\";"
+    },
+    {
+      "source": "src/server/trpc.ts",
+      "relationship": "imports",
+      "target": "@/lib/prisma",
+      "evidence": "import { prisma } from \"@/lib/prisma\";"
+    },
+    {
+      "source": "tailwind.config.js",
+      "relationship": "imports",
+      "target": "tailwindcss-animate",
+      "evidence": "require(\"tailwindcss-animate\"),"
+    },
+    {
+      "source": "tailwind.config.js",
+      "relationship": "imports",
+      "target": "@tailwindcss/typography",
+      "evidence": "require(\"@tailwindcss/typography\"),"
+    },
+    {
+      "source": "tailwind.config.js",
+      "relationship": "imports",
+      "target": "tailwindcss",
+      "evidence": "/** @type {import('tailwindcss').Config} */"
+    }
+  ],
+  "secrets_report": {
+    "total_files_scanned": 71,
+    "files_with_secrets": 2,
+    "secret_types_found": [
+      "Database URL with Credentials",
+      "Generic Secret Assignment"
+    ],
+    "findings": [
+      {
+        "file": "docker-compose.yml",
+        "secret_types": [
+          "Database URL with Credentials"
+        ]
+      },
+      {
+        "file": "src/lib/auth.ts",
+        "secret_types": [
+          "Generic Secret Assignment"
+        ]
+      }
+    ],
+    "high_risk_files": []
+  }
+}
