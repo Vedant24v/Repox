@@ -13,12 +13,12 @@ import time
 
 logger = logging.getLogger(__name__)
 
-MODEL: str = "llama-3.3-70b-versatile"
+MODEL: str = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
 
 # Groq's llama-3.3 tokenises at roughly 4 chars / token
 _CHARS_PER_TOKEN: int = 4
-_MAX_USER_TOKENS: int = 6_000
-_MAX_USER_CHARS: int = _MAX_USER_TOKENS * _CHARS_PER_TOKEN  # ≈ 24 000 chars
+_MAX_USER_TOKENS: int = 2_500
+_MAX_USER_CHARS: int = _MAX_USER_TOKENS * _CHARS_PER_TOKEN  # ≈ 10 000 chars
 _TRUNCATION_NOTE: str = (
     "\n\n[… content truncated to fit the context window; "
     "some details may be absent …]\n"
@@ -71,7 +71,7 @@ def call_llm(
     system_prompt: str,
     user_prompt: str,
     json_mode: bool = False,
-    max_retries: int = 2,
+    max_retries: int = 5,
 ) -> str:
     """
     Call the Groq API with retry and truncation protection.
@@ -125,7 +125,7 @@ def call_llm(
             content = resp.choices[0].message.content or ""
             return content
         except RateLimitError as exc:
-            wait = 2 ** attempt * 15  # 15 s, 30 s
+            wait = (attempt + 1) * 20  # 20s, 40s, 60s, 80s, 100s
             logger.warning(
                 "Groq rate-limit (attempt %d/%d) — waiting %ds. %s",
                 attempt + 1, max_retries, wait, exc,

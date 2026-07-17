@@ -62,12 +62,16 @@ const MermaidDiagram = ({ mmd, id }: { mmd: string; id: string }) => {
         const mermaid = (await import("mermaid")).default;
         mermaid.initialize({
           startOnLoad: false,
-          theme: "dark",
+          theme: "default",
           securityLevel: "loose",
           themeVariables: {
-            background: "#0f172a",
-            primaryColor: "#3b82f6",
-            lineColor: "#64748b"
+            background: "#ffffff",
+            primaryColor: "#7c3aed",
+            primaryTextColor: "#332f3a",
+            primaryBorderColor: "#7c3aed",
+            lineColor: "#7c3aed",
+            secondaryColor: "#db2777",
+            tertiaryColor: "#0ea5e9"
           }
         });
         const { svg: renderedSvg } = await mermaid.render(`mermaid-svg-${id}`, mmd);
@@ -90,9 +94,9 @@ const MermaidDiagram = ({ mmd, id }: { mmd: string; id: string }) => {
 
   if (error) {
     return (
-      <div className="bg-red-950/20 border border-red-900/50 rounded-2xl p-6 text-xs text-red-400 font-mono">
-        <p className="font-semibold mb-2">{error}</p>
-        <pre className="p-3 bg-black/40 rounded-xl overflow-x-auto text-[10px]">
+      <div className="bg-red-500/5 border-2 border-red-500/25 rounded-2xl p-6 text-xs text-red-600 font-mono shadow-[inset_1px_1px_2px_rgba(255,255,255,0.6)]">
+        <p className="font-heading font-bold mb-2">{error}</p>
+        <pre className="p-3 bg-[#EFEBF5] rounded-xl overflow-x-auto text-[10px] shadow-clay-pressed">
           {mmd}
         </pre>
       </div>
@@ -101,16 +105,16 @@ const MermaidDiagram = ({ mmd, id }: { mmd: string; id: string }) => {
 
   if (!svg) {
     return (
-      <div className="h-64 flex flex-col items-center justify-center bg-slate-900/20 border border-white/5 rounded-2xl">
-        <Loader2 className="w-8 h-8 animate-spin text-[var(--brand)] mb-2" />
-        <span className="text-xs text-white/40">Generating diagram...</span>
+      <div className="h-64 flex flex-col items-center justify-center bg-[#EFEBF5] border border-black/5 rounded-2xl shadow-clay-pressed">
+        <Loader2 className="w-8 h-8 animate-spin text-clay-primary mb-2" />
+        <span className="text-xs font-sans font-semibold text-clay-muted">Generating diagram...</span>
       </div>
     );
   }
 
   return (
     <div 
-      className="p-6 bg-slate-900/40 border border-white/5 rounded-2xl overflow-auto flex justify-center items-center select-none"
+      className="p-6 bg-white border border-black/5 rounded-[32px] overflow-auto flex justify-center items-center select-none shadow-clay-card hover:shadow-clay-card-hover transition-all duration-300"
       dangerouslySetInnerHTML={{ __html: svg }}
     />
   );
@@ -155,7 +159,7 @@ export default function ResultsPage() {
         return (
           <span 
             key={index} 
-            className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-500/10 text-green-400 border border-green-500/20 font-sans ml-1"
+            className="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-heading font-black bg-green-500/10 text-green-600 border border-green-500/20 font-sans ml-1 shadow-[inset_1px_1px_2px_rgba(255,255,255,0.6)]"
           >
             Confirmed
           </span>
@@ -165,7 +169,7 @@ export default function ResultsPage() {
         return (
           <span 
             key={index} 
-            className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20 font-sans ml-1"
+            className="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-heading font-black bg-blue-500/10 text-blue-600 border border-blue-500/20 font-sans ml-1 shadow-[inset_1px_1px_2px_rgba(255,255,255,0.6)]"
           >
             Inferred
           </span>
@@ -175,7 +179,7 @@ export default function ResultsPage() {
         return (
           <span 
             key={index} 
-            className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 font-sans ml-1"
+            className="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-heading font-black bg-yellow-500/10 text-yellow-600 border border-yellow-500/20 font-sans ml-1 shadow-[inset_1px_1px_2px_rgba(255,255,255,0.6)]"
           >
             Unclear
           </span>
@@ -185,7 +189,7 @@ export default function ResultsPage() {
         return (
           <span 
             key={index} 
-            className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-red-500/10 text-red-400 border border-red-500/20 font-sans ml-1"
+            className="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-heading font-black bg-red-500/10 text-red-600 border border-red-500/20 font-sans ml-1 shadow-[inset_1px_1px_2px_rgba(255,255,255,0.6)]"
           >
             Missing
           </span>
@@ -212,34 +216,34 @@ export default function ResultsPage() {
   // Custom react-markdown component styling
   const markdownComponents = {
     h1({ children }: { children?: React.ReactNode }) {
-      return <h1 className="text-3xl font-bold text-white tracking-tight mb-6 mt-2">{children}</h1>;
+      return <h1 className="text-3xl font-heading font-black text-clay-foreground tracking-tight mb-6 mt-2">{children}</h1>;
     },
     h2({ children }: { children?: React.ReactNode }) {
-      return <h2 className="text-xl font-semibold text-white tracking-tight border-b border-white/5 pb-2 mb-4 mt-8">{children}</h2>;
+      return <h2 className="text-xl sm:text-2xl font-heading font-bold text-clay-foreground tracking-tight border-b border-black/5 pb-2 mb-4 mt-8">{children}</h2>;
     },
     h3({ children }: { children?: React.ReactNode }) {
-      return <h3 className="text-lg font-medium text-white/90 mb-3 mt-6">{children}</h3>;
+      return <h3 className="text-lg font-heading font-bold text-clay-foreground mb-3 mt-6">{children}</h3>;
     },
     p({ children }: { children?: React.ReactNode }) {
-      return <p className="text-base text-white/70 leading-relaxed mb-4">{React.Children.map(children, processNode)}</p>;
+      return <p className="text-base text-clay-foreground/90 font-sans leading-relaxed mb-4">{React.Children.map(children, processNode)}</p>;
     },
     li({ children }: { children?: React.ReactNode }) {
-      return <li className="text-sm text-white/70 leading-relaxed mb-2 list-disc ml-5">{React.Children.map(children, processNode)}</li>;
+      return <li className="text-sm text-clay-foreground/90 font-sans leading-relaxed mb-2 list-disc ml-5">{React.Children.map(children, processNode)}</li>;
     },
     strong({ children }: { children?: React.ReactNode }) {
-      return <strong className="font-semibold text-white/95">{children}</strong>;
+      return <strong className="font-bold text-clay-foreground">{children}</strong>;
     },
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     code({ children, ...props }: { children?: React.ReactNode; [key: string]: any }) {
       return (
-        <code className="bg-white/5 px-1.5 py-0.5 rounded text-sm font-mono text-[var(--brand)]" {...props}>
+        <code className="bg-clay-primary/10 px-2 py-0.5 rounded-lg text-sm font-mono text-clay-primary shadow-[inset_0.5px_0.5px_1px_rgba(124,58,237,0.15)]" {...props}>
           {children}
         </code>
       );
     },
     blockquote({ children }: { children?: React.ReactNode }) {
       return (
-        <blockquote className="border-l-4 border-[var(--brand)] bg-white/[0.01] px-5 py-4 my-6 rounded-r-xl text-white/60 italic text-sm">
+        <blockquote className="border-l-4 border-clay-primary bg-clay-primary/5 px-5 py-4 my-6 rounded-r-2xl text-clay-foreground/80 font-sans italic text-sm shadow-[inset_1px_1px_2px_rgba(255,255,255,0.6)]">
           {children}
         </blockquote>
       );
@@ -247,25 +251,22 @@ export default function ResultsPage() {
   };
 
   return (
-    <div
-      className="min-h-screen flex flex-col font-sans"
-      style={{ background: "var(--surface-1)", color: "var(--foreground)" }}
-    >
+    <div className="min-h-screen flex flex-col bg-transparent text-clay-foreground">
       {/* ── Top Header ─────────────────────────────────────────── */}
-      <header className="flex items-center justify-between px-8 py-4 border-b border-white/5 bg-slate-950/40 backdrop-blur sticky top-0 z-50">
+      <header className="flex items-center justify-between px-8 py-4 border-b border-black/5 bg-white/40 backdrop-blur-md sticky top-0 z-50">
         <div className="flex items-center gap-6">
           <Link
             href="/upload"
-            className="flex items-center gap-1.5 text-xs text-white/40 transition-colors hover:text-white"
+            className="flex items-center gap-1.5 text-xs font-sans font-bold text-clay-muted transition-colors hover:text-clay-primary"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             New Upload
           </Link>
-          <div className="flex items-center gap-2.5 border-l border-white/10 pl-6">
-            <div className="w-7 h-7 rounded-lg flex items-center justify-center bg-[var(--brand)]">
+          <div className="flex items-center gap-2.5 border-l border-black/5 pl-6">
+            <div className="w-7 h-7 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#A78BFA] to-[#7C3AED] shadow-clay-button">
               <Code2 className="w-3.5 h-3.5 text-white" />
             </div>
-            <span className="font-semibold text-white tracking-tight">RepoTutor Results</span>
+            <span className="font-heading font-black text-clay-foreground tracking-tight">RepoTutor Results</span>
           </div>
         </div>
 
@@ -273,9 +274,9 @@ export default function ResultsPage() {
           <a
             href={`${API_URL}/api/projects/${project_id}/download`}
             download
-            className="inline-flex items-center gap-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 px-4 py-2 text-xs font-semibold text-white transition-all shadow-sm"
+            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-br from-[#A78BFA] to-[#7C3AED] px-4 py-2 text-xs font-heading font-black text-white hover:shadow-clay-button-hover hover:-translate-y-0.5 active:scale-95 shadow-clay-button transition-all duration-200"
           >
-            <Download className="w-3.5 h-3.5 text-[var(--brand)]" />
+            <Download className="w-3.5 h-3.5 text-white" />
             Download Full Package (.zip)
           </a>
         </div>
@@ -284,9 +285,9 @@ export default function ResultsPage() {
       {/* ── Body Container ────────────────────────────────────── */}
       <div className="flex-1 flex overflow-hidden">
         {/* Left Nav Sidebar */}
-        <aside className="w-80 border-r border-white/5 bg-slate-950/20 p-6 space-y-4 overflow-y-auto hidden md:block shrink-0">
+        <aside className="w-80 border-r border-black/5 bg-white/20 p-6 space-y-4 overflow-y-auto hidden md:block shrink-0">
           <div className="space-y-1">
-            <h3 className="px-3 text-[10px] font-bold uppercase tracking-wider text-white/30 mb-3">TUTORIAL SECTIONS</h3>
+            <h3 className="px-3 text-[10px] font-heading font-black uppercase tracking-wider text-clay-muted/40 mb-3">TUTORIAL SECTIONS</h3>
             {SIDEBAR_ITEMS.map((item) => {
               const Icon = item.icon;
               const isActive = activeKey === item.key;
@@ -295,14 +296,14 @@ export default function ResultsPage() {
                   key={item.key}
                   onClick={() => setActiveKey(item.key)}
                   className={`
-                    w-full flex items-center gap-3 rounded-xl px-4.5 py-3 text-sm text-left transition-all duration-150 group
-                    ${isActive 
-                      ? "bg-[var(--brand-dim)] text-white border-l-2 border-[var(--brand)] font-medium" 
-                      : "text-white/50 hover:text-white hover:bg-white/[0.02]"
+                    w-full flex items-center gap-3 rounded-xl px-4.5 py-3.5 text-sm text-left transition-all duration-200 group border-l-4
+                    ${isActive
+                      ? "bg-clay-primary/10 text-clay-primary border-clay-primary font-heading font-bold shadow-[inset_1px_1px_2px_rgba(255,255,255,0.6)]"
+                      : "text-clay-muted/75 hover:text-clay-primary hover:bg-clay-primary/5 border-transparent"
                     }
                   `}
                 >
-                  <Icon className={`w-4 h-4 shrink-0 transition-transform duration-200 group-hover:scale-105 ${isActive ? "text-[var(--brand)]" : "text-white/30"}`} />
+                  <Icon className={`w-4 h-4 shrink-0 transition-transform duration-200 group-hover:scale-110 ${isActive ? "text-clay-primary" : "text-clay-muted/40"}`} />
                   <span className="truncate">{item.title}</span>
                 </button>
               );
@@ -314,24 +315,24 @@ export default function ResultsPage() {
         <main className="flex-1 overflow-y-auto px-8 md:px-12 py-10">
           {loading ? (
             // Loading skeleton
-            <div className="max-w-4xl space-y-8 animate-pulse">
-              <div className="h-8 bg-white/5 w-1/3 rounded-xl" />
-              <div className="h-4 bg-white/5 w-1/4 rounded-xl mb-12" />
+            <div className="max-w-4xl space-y-8 animate-pulse bg-white/70 rounded-[36px] shadow-clay-card p-10">
+              <div className="h-8 bg-[#EFEBF5] w-1/3 rounded-xl shadow-clay-pressed" />
+              <div className="h-4 bg-[#EFEBF5] w-1/4 rounded-xl mb-12 shadow-clay-pressed" />
               <div className="space-y-3">
-                <div className="h-4 bg-white/5 w-full rounded" />
-                <div className="h-4 bg-white/5 w-full rounded" />
-                <div className="h-4 bg-white/5 w-5/6 rounded" />
+                <div className="h-4 bg-[#EFEBF5] w-full rounded-lg shadow-clay-pressed" />
+                <div className="h-4 bg-[#EFEBF5] w-full rounded-lg shadow-clay-pressed" />
+                <div className="h-4 bg-[#EFEBF5] w-5/6 rounded-lg shadow-clay-pressed" />
               </div>
-              <div className="h-40 bg-white/5 w-full rounded-2xl mt-12" />
+              <div className="h-40 bg-[#EFEBF5] w-full rounded-[24px] mt-12 shadow-clay-pressed" />
             </div>
           ) : (
-            <div className="max-w-4xl">
+            <div className="max-w-4xl bg-white/80 border border-black/5 rounded-[36px] shadow-clay-card p-8 md:p-12 hover:shadow-clay-card-hover transition-all duration-300">
               {activeKey === "diagrams" ? (
                 // Custom visual diagrams view
                 <div className="space-y-10">
                   <div>
-                    <h1 className="text-3xl font-bold text-white tracking-tight mb-2">Visual Diagrams</h1>
-                    <p className="text-sm text-white/40">Deterministic representations of system flows and directories.</p>
+                    <h1 className="text-3xl font-heading font-black text-clay-foreground tracking-tight mb-2">Visual Diagrams</h1>
+                    <p className="text-sm font-sans font-medium text-clay-muted">Deterministic representations of system flows and directories.</p>
                   </div>
                   
                   <div className="space-y-8">
@@ -352,17 +353,17 @@ export default function ResultsPage() {
                         }
 
                         return (
-                          <div key={filename} className="border border-white/5 rounded-3xl bg-slate-900/10 p-6 space-y-4">
+                          <div key={filename} className="border border-black/5 rounded-[28px] bg-white/50 p-6 space-y-4 shadow-clay-card hover:-translate-y-1 hover:shadow-clay-card-hover transition-all duration-300">
                             <div>
-                              <h3 className="text-lg font-semibold text-white/90 capitalize">{formattedTitle}</h3>
-                              <p className="text-xs text-white/40 mt-1">{caption}</p>
+                              <h3 className="text-lg font-heading font-bold text-clay-foreground capitalize">{formattedTitle}</h3>
+                              <p className="text-xs font-sans font-medium text-clay-muted mt-1">{caption}</p>
                             </div>
                             <MermaidDiagram mmd={content} id={filename.replace(/\./g, "-")} />
                           </div>
                         );
                       })
                     ) : (
-                      <div className="p-8 text-center text-white/40 border border-white/5 rounded-2xl">
+                      <div className="p-8 text-center font-sans font-medium text-clay-muted border border-black/5 bg-[#EFEBF5] rounded-2xl shadow-clay-pressed">
                         No diagram assets were generated for this project.
                       </div>
                     )}
@@ -370,7 +371,7 @@ export default function ResultsPage() {
                 </div>
               ) : (
                 // Markdown content view
-                <article className="prose prose-invert max-w-none">
+                <article className="prose prose-slate max-w-none">
                   <ReactMarkdown 
                     remarkPlugins={[remarkGfm]}
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any

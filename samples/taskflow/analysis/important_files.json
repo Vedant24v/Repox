@@ -1,0 +1,142 @@
+[
+  {
+    "path": "api/index.js",
+    "reason_important": "Application entry point",
+    "score": 180,
+    "language": "JavaScript",
+    "category": "backend_route"
+  },
+  {
+    "path": "server/routes/auth.js",
+    "reason_important": "Route definitions file",
+    "score": 170,
+    "language": "JavaScript",
+    "category": "backend_route"
+  },
+  {
+    "path": "src/pages/Auth.jsx",
+    "reason_important": "Authentication logic",
+    "score": 150,
+    "language": "JavaScript (JSX)",
+    "category": "frontend_component"
+  },
+  {
+    "path": "server/middleware/authMiddleware.js",
+    "reason_important": "Authentication logic",
+    "score": 145,
+    "language": "JavaScript",
+    "category": "other"
+  },
+  {
+    "path": "server/server.js",
+    "reason_important": "Application entry point",
+    "score": 100,
+    "language": "JavaScript",
+    "category": "backend_route"
+  },
+  {
+    "path": "server/routes/tasks.js",
+    "reason_important": "Route definitions file",
+    "score": 85,
+    "language": "JavaScript",
+    "category": "backend_route"
+  },
+  {
+    "path": "server/routes/users.js",
+    "reason_important": "Route definitions file",
+    "score": 85,
+    "language": "JavaScript",
+    "category": "backend_route"
+  },
+  {
+    "path": "src/main.jsx",
+    "reason_important": "LLM / AI agent code",
+    "score": 75,
+    "language": "JavaScript (JSX)",
+    "category": "frontend_component"
+  },
+  {
+    "path": "tailwind.config.js",
+    "reason_important": "LLM / AI agent code",
+    "score": 75,
+    "language": "JavaScript",
+    "category": "config"
+  },
+  {
+    "path": "server/models/Task.js",
+    "reason_important": "Data model or schema definition",
+    "score": 70,
+    "language": "JavaScript",
+    "category": "model"
+  },
+  {
+    "path": "server/models/User.js",
+    "reason_important": "Data model or schema definition",
+    "score": 70,
+    "language": "JavaScript",
+    "category": "model"
+  },
+  {
+    "path": ".env.example",
+    "reason_important": "Environment variable template",
+    "score": 65,
+    "language": "Unknown",
+    "category": "config"
+  },
+  {
+    "path": "server/.env.example",
+    "reason_important": "Environment variable template",
+    "score": 65,
+    "language": "Unknown",
+    "category": "config"
+  },
+  {
+    "path": "src/pages/Dashboard.jsx",
+    "reason_important": "Frontend page component",
+    "score": 65,
+    "language": "JavaScript (JSX)",
+    "category": "frontend_component"
+  },
+  {
+    "path": "src/components/Avatar.jsx",
+    "reason_important": "Shared UI component",
+    "score": 60,
+    "language": "JavaScript (JSX)",
+    "category": "frontend_component"
+  },
+  {
+    "path": "src/components/Header.jsx",
+    "reason_important": "Shared UI component",
+    "score": 60,
+    "language": "JavaScript (JSX)",
+    "category": "frontend_component"
+  },
+  {
+    "path": "src/components/KanbanBoard.jsx",
+    "reason_important": "Shared UI component",
+    "score": 60,
+    "language": "JavaScript (JSX)",
+    "category": "frontend_component"
+  },
+  {
+    "path": "src/components/KanbanColumn.jsx",
+    "reason_important": "Shared UI component",
+    "score": 60,
+    "language": "JavaScript (JSX)",
+    "category": "frontend_component"
+  },
+  {
+    "path": "src/components/TaskCard.jsx",
+    "reason_important": "Shared UI component",
+    "score": 60,
+    "language": "JavaScript (JSX)",
+    "category": "frontend_component"
+  },
+  {
+    "path": "src/components/TaskModal.jsx",
+    "reason_important": "Shared UI component",
+    "score": 60,
+    "language": "JavaScript (JSX)",
+    "category": "frontend_component"
+  }
+]

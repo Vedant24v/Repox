@@ -4,12 +4,12 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 
 from dotenv import load_dotenv
+load_dotenv()
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.routes import upload, projects, generate
-
-load_dotenv()
 
 STORAGE_DIR = Path(os.getenv("STORAGE_DIR", "storage"))
 DB_PATH = STORAGE_DIR / "db.sqlite"
@@ -53,12 +53,16 @@ app = FastAPI(
 # ---------------------------------------------------------------------------
 # CORS — allow the Next.js dev server and any future Vercel deployment
 # ---------------------------------------------------------------------------
-origins = [
+default_origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    # Add your Vercel domain here once you have it, e.g.:
-    # "https://repoxr.vercel.app",
 ]
+configured_origins = [
+    origin.strip()
+    for origin in os.getenv("CORS_ORIGINS", "").split(",")
+    if origin.strip()
+]
+origins = list(dict.fromkeys([*default_origins, *configured_origins]))
 
 app.add_middleware(
     CORSMiddleware,

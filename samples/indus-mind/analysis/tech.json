@@ -1,0 +1,42 @@
+{
+  "languages": [
+    "JavaScript",
+    "TypeScript",
+    "Python",
+    "Java",
+    "Java/Kotlin"
+  ],
+  "frontend_frameworks": [
+    "Next.js",
+    "React"
+  ],
+  "backend_frameworks": [
+    "tRPC"
+  ],
+  "databases": [
+    "Prisma",
+    "@prisma/client"
+  ],
+  "auth_libraries": [
+    "NextAuth.js"
+  ],
+  "ai_llm_libraries": [
+    "Qdrant",
+    "OpenAI",
+    "Groq",
+    "HuggingFace Transformers",
+    "HuggingFace"
+  ],
+  "cloud_config": [],
+  "docker": true,
+  "package_managers": [
+    "npm"
+  ],
+  "testing_frameworks": [],
+  "external_apis_detected": [
+    "/api/py/upload",
+    "/api/py/collections/${projectId}",
+    "/api/py/query",
+    "/api/py/documents/${projectId}/${documentId}"
+  ]
+}

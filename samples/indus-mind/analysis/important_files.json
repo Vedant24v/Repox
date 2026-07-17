@@ -1,0 +1,142 @@
+[
+  {
+    "path": "src/server/routers/auth.ts",
+    "reason_important": "Route definitions file",
+    "score": 170,
+    "language": "TypeScript",
+    "category": "other"
+  },
+  {
+    "path": "src/app/api/auth/[...nextauth]/route.ts",
+    "reason_important": "Authentication logic",
+    "score": 165,
+    "language": "TypeScript",
+    "category": "backend_route"
+  },
+  {
+    "path": "mcp-server/index.ts",
+    "reason_important": "Application entry point",
+    "score": 100,
+    "language": "TypeScript",
+    "category": "other"
+  },
+  {
+    "path": "src/app/(auth)/layout.tsx",
+    "reason_important": "Next.js / framework layout root",
+    "score": 90,
+    "language": "TypeScript (JSX)",
+    "category": "frontend_component"
+  },
+  {
+    "path": "src/app/dashboard/layout.tsx",
+    "reason_important": "Next.js / framework layout root",
+    "score": 90,
+    "language": "TypeScript (JSX)",
+    "category": "frontend_component"
+  },
+  {
+    "path": "src/app/layout.tsx",
+    "reason_important": "Next.js / framework layout root",
+    "score": 90,
+    "language": "TypeScript (JSX)",
+    "category": "frontend_component"
+  },
+  {
+    "path": "src/lib/auth.config.ts",
+    "reason_important": "Authentication logic",
+    "score": 85,
+    "language": "TypeScript",
+    "category": "other"
+  },
+  {
+    "path": "src/lib/auth.ts",
+    "reason_important": "Authentication logic",
+    "score": 85,
+    "language": "TypeScript",
+    "category": "other"
+  },
+  {
+    "path": "src/server/routers/_app.ts",
+    "reason_important": "Route definitions file",
+    "score": 85,
+    "language": "TypeScript",
+    "category": "other"
+  },
+  {
+    "path": "src/server/routers/chat.ts",
+    "reason_important": "Route definitions file",
+    "score": 85,
+    "language": "TypeScript",
+    "category": "other"
+  },
+  {
+    "path": "src/server/routers/document.ts",
+    "reason_important": "Route definitions file",
+    "score": 85,
+    "language": "TypeScript",
+    "category": "other"
+  },
+  {
+    "path": "src/server/routers/project.ts",
+    "reason_important": "Route definitions file",
+    "score": 85,
+    "language": "TypeScript",
+    "category": "other"
+  },
+  {
+    "path": "src/types/next-auth.d.ts",
+    "reason_important": "Authentication logic",
+    "score": 85,
+    "language": "TypeScript",
+    "category": "model"
+  },
+  {
+    "path": "src/app/api/py/collections/[projectId]/route.ts",
+    "reason_important": "API handler or route file",
+    "score": 80,
+    "language": "TypeScript",
+    "category": "backend_route"
+  },
+  {
+    "path": "src/app/api/py/documents/[projectId]/[documentId]/route.ts",
+    "reason_important": "API handler or route file",
+    "score": 80,
+    "language": "TypeScript",
+    "category": "backend_route"
+  },
+  {
+    "path": "src/app/api/py/query/route.ts",
+    "reason_important": "API handler or route file",
+    "score": 80,
+    "language": "TypeScript",
+    "category": "backend_route"
+  },
+  {
+    "path": "src/app/api/py/upload/route.ts",
+    "reason_important": "API handler or route file",
+    "score": 80,
+    "language": "TypeScript",
+    "category": "backend_route"
+  },
+  {
+    "path": "src/app/api/trpc/[trpc]/route.ts",
+    "reason_important": "API handler or route file",
+    "score": 80,
+    "language": "TypeScript",
+    "category": "backend_route"
+  },
+  {
+    "path": "tailwind.config.js",
+    "reason_important": "LLM / AI agent code",
+    "score": 75,
+    "language": "JavaScript",
+    "category": "config"
+  },
+  {
+    "path": "prisma/schema.prisma",
+    "reason_important": "Prisma schema",
+    "score": 70,
+    "language": "Unknown",
+    "category": "model"
+  }
+]

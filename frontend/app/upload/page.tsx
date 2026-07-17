@@ -134,28 +134,21 @@ export default function UploadPage() {
   };
 
   return (
-    <div
-      className="min-h-screen flex flex-col"
-      style={{ background: "var(--surface-1)", color: "var(--foreground)" }}
-    >
+    <div className="min-h-screen flex flex-col bg-transparent text-clay-foreground select-none">
       {/* ── Nav ──────────────────────────────────────────────── */}
-      <nav className="flex items-center gap-4 px-8 py-5 border-b border-white/5">
+      <nav className="flex items-center gap-4 px-8 py-5 border-b border-black/5 bg-white/40 backdrop-blur-md sticky top-0 z-50">
         <Link
           href="/"
-          className="flex items-center gap-1.5 text-sm transition-colors hover:text-white"
-          style={{ color: "oklch(0.55 0.02 280)" }}
+          className="flex items-center gap-1.5 text-sm font-sans font-bold transition-colors text-clay-muted hover:text-clay-primary"
         >
           <ArrowLeft className="w-4 h-4" />
           Back
         </Link>
-        <div className="flex items-center gap-2.5">
-          <div
-            className="w-7 h-7 rounded-lg flex items-center justify-center"
-            style={{ background: "var(--brand)" }}
-          >
-            <Code2 className="w-3.5 h-3.5 text-white" />
+        <div className="flex items-center gap-2.5 border-l border-black/5 pl-4">
+          <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#A78BFA] to-[#7C3AED] shadow-clay-button">
+            <Code2 className="w-4 h-4 text-white" />
           </div>
-          <span className="font-semibold text-white tracking-tight">RepoTutor</span>
+          <span className="font-heading font-black text-clay-foreground tracking-tight">RepoTutor</span>
         </div>
       </nav>
 
@@ -164,25 +157,22 @@ export default function UploadPage() {
         <form
           id="upload-form"
           onSubmit={handleSubmit}
-          className="w-full max-w-2xl space-y-8 animate-fade-up"
+          className="w-full max-w-2xl bg-white/70 backdrop-blur-xl rounded-[40px] border border-black/5 shadow-clay-card p-8 md:p-12 space-y-8 animate-fade-up"
         >
           {/* Header */}
           <div>
-            <h1 className="text-3xl font-bold text-white tracking-tight mb-2">
+            <h1 className="text-3xl sm:text-4xl font-heading font-black text-clay-foreground tracking-tight mb-2">
               Analyze your repository
             </h1>
-            <p style={{ color: "oklch(0.55 0.02 280)" }} className="text-sm">
+            <p className="text-sm text-clay-muted font-sans font-medium">
               Upload a ZIP of your codebase and tell us a bit about it.
             </p>
           </div>
 
           {/* ── Step 1: File drop ─────────────────────────────── */}
-          <section>
-            <h2 className="text-sm font-semibold text-white/80 mb-3 flex items-center gap-2">
-              <span
-                className="w-5 h-5 rounded-full flex items-center justify-center text-xs"
-                style={{ background: "var(--brand-dim)", color: "var(--brand)" }}
-              >
+          <section className="space-y-3">
+            <h2 className="text-base font-heading font-bold text-clay-foreground flex items-center gap-2.5">
+              <span className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-heading font-black bg-clay-primary/10 text-clay-primary shadow-[inset_1px_1px_2px_rgba(255,255,255,0.6)]">
                 1
               </span>
               Upload your ZIP file
@@ -193,41 +183,35 @@ export default function UploadPage() {
                 {...getRootProps()}
                 id="dropzone"
                 className={`
-                  rounded-2xl border-2 border-dashed px-8 py-12 text-center cursor-pointer
-                  transition-all duration-200
-                  ${isDragActive ? "border-[var(--brand)] bg-[var(--brand-dim)]" : "border-white/10 hover:border-white/20 hover:bg-white/[0.02]"}
+                  rounded-[28px] border-4 border-dashed px-8 py-14 text-center cursor-pointer
+                  transition-all duration-300 shadow-clay-pressed
+                  ${isDragActive ? "border-clay-primary bg-clay-primary/5 scale-[1.02]" : "border-clay-primary/20 bg-[#EFEBF5] hover:border-clay-primary/45 hover:scale-[1.01]"}
                 `}
               >
                 <input {...getInputProps()} id="zip-input" />
                 <Upload
-                  className="mx-auto mb-4 w-10 h-10"
-                  style={{ color: isDragActive ? "var(--brand)" : "oklch(0.4 0.01 280)" }}
+                  className="mx-auto mb-4 w-12 h-12 transition-colors duration-300"
+                  style={{ color: isDragActive ? "var(--color-clay-primary)" : "var(--color-clay-muted)" }}
                 />
-                <p className="text-white/70 text-sm mb-1">
-                  {isDragActive ? "Release to upload" : "Drag & drop your repository ZIP here"}
+                <p className="text-clay-foreground font-heading font-bold text-base mb-1.5">
+                  {isDragActive ? "Release to upload!" : "Drag & drop your repository ZIP here"}
                 </p>
-                <p className="text-xs" style={{ color: "oklch(0.4 0.01 280)" }}>
+                <p className="text-xs text-clay-muted font-sans font-semibold">
                   or{" "}
-                  <span className="underline underline-offset-2" style={{ color: "var(--brand)" }}>
+                  <span className="underline underline-offset-2 text-clay-primary hover:text-clay-primary-hover">
                     click to browse
                   </span>
                   {" "}· .zip only
                 </p>
               </div>
             ) : (
-              <div
-                className="rounded-2xl border border-white/10 px-6 py-4 flex items-center gap-4"
-                style={{ background: "var(--surface-2)" }}
-              >
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                  style={{ background: "var(--brand-dim)" }}
-                >
-                  <FileArchive className="w-5 h-5" style={{ color: "var(--brand)" }} />
+              <div className="rounded-[28px] border border-black/5 bg-white/80 px-6 py-5 flex items-center gap-4 shadow-clay-card hover:-translate-y-1 hover:shadow-clay-card-hover transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-gradient-to-br from-violet-400 to-violet-600 shadow-clay-button text-white">
+                  <FileArchive className="w-6 h-6" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-white truncate">{file.name}</p>
-                  <p className="text-xs mt-0.5" style={{ color: "oklch(0.5 0.02 280)" }}>
+                  <p className="text-sm font-heading font-bold text-clay-foreground truncate">{file.name}</p>
+                  <p className="text-xs font-sans font-semibold text-clay-muted mt-0.5">
                     {formatSize(file.size)}
                   </p>
                 </div>
@@ -235,27 +219,23 @@ export default function UploadPage() {
                   id="remove-file-btn"
                   type="button"
                   onClick={() => setFile(null)}
-                  className="p-1.5 rounded-lg hover:bg-white/5 transition-colors"
-                  style={{ color: "oklch(0.5 0.02 280)" }}
+                  className="p-2 rounded-xl bg-[#EFEBF5] shadow-clay-button hover:-translate-y-0.5 active:scale-90 hover:bg-red-500 hover:text-white transition-all text-clay-muted"
                 >
                   <X className="w-4 h-4" />
                 </button>
-                <CheckCircle2 className="w-5 h-5 shrink-0" style={{ color: "oklch(0.65 0.18 145)" }} />
+                <CheckCircle2 className="w-6 h-6 shrink-0 text-clay-success" />
               </div>
             )}
           </section>
 
           {/* ── Step 2: Product description ───────────────────── */}
-          <section className="animate-fade-up delay-100">
-            <h2 className="text-sm font-semibold text-white/80 mb-3 flex items-center gap-2">
-              <span
-                className="w-5 h-5 rounded-full flex items-center justify-center text-xs"
-                style={{ background: "var(--brand-dim)", color: "var(--brand)" }}
-              >
+          <section className="animate-fade-up delay-100 space-y-3">
+            <h2 className="text-base font-heading font-bold text-clay-foreground flex items-center gap-2.5">
+              <span className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-heading font-black bg-clay-primary/10 text-clay-primary shadow-[inset_1px_1px_2px_rgba(255,255,255,0.6)]">
                 2
               </span>
               Describe your product{" "}
-              <span className="font-normal text-white/30">(optional)</span>
+              <span className="font-sans font-medium text-clay-muted/65 text-xs"> (optional)</span>
             </h2>
             <Textarea
               id="product-description"
@@ -263,21 +243,17 @@ export default function UploadPage() {
               value={productDescription}
               onChange={(e) => setProductDescription(e.target.value)}
               rows={3}
-              className="resize-none border-white/10 bg-white/[0.03] text-white/80 placeholder:text-white/20 focus-visible:ring-[var(--brand)] focus-visible:border-[var(--brand)]"
             />
           </section>
 
           {/* ── Step 3: Important features ────────────────────── */}
-          <section className="animate-fade-up delay-200">
-            <h2 className="text-sm font-semibold text-white/80 mb-3 flex items-center gap-2">
-              <span
-                className="w-5 h-5 rounded-full flex items-center justify-center text-xs"
-                style={{ background: "var(--brand-dim)", color: "var(--brand)" }}
-              >
+          <section className="animate-fade-up delay-200 space-y-3">
+            <h2 className="text-base font-heading font-bold text-clay-foreground flex items-center gap-2.5">
+              <span className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-heading font-black bg-clay-primary/10 text-clay-primary shadow-[inset_1px_1px_2px_rgba(255,255,255,0.6)]">
                 3
               </span>
               Features to explain{" "}
-              <span className="font-normal text-white/30">(optional)</span>
+              <span className="font-sans font-medium text-clay-muted/65 text-xs"> (optional)</span>
             </h2>
             <Textarea
               id="important-features"
@@ -285,32 +261,27 @@ export default function UploadPage() {
               value={importantFeatures}
               onChange={(e) => setImportantFeatures(e.target.value)}
               rows={3}
-              className="resize-none border-white/10 bg-white/[0.03] text-white/80 placeholder:text-white/20 focus-visible:ring-[var(--brand)] focus-visible:border-[var(--brand)]"
             />
           </section>
 
           {/* ── Step 4: Audience level ───────────────────────── */}
-          <section className="animate-fade-up delay-300">
-            <h2 className="text-sm font-semibold text-white/80 mb-4 flex items-center gap-2">
-              <span
-                className="w-5 h-5 rounded-full flex items-center justify-center text-xs"
-                style={{ background: "var(--brand-dim)", color: "var(--brand)" }}
-              >
+          <section className="animate-fade-up delay-300 space-y-4">
+            <h2 className="text-base font-heading font-bold text-clay-foreground flex items-center gap-2.5">
+              <span className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-heading font-black bg-clay-primary/10 text-clay-primary shadow-[inset_1px_1px_2px_rgba(255,255,255,0.6)]">
                 4
               </span>
               Who is this explanation for?
               <div className="relative group ml-1 inline-flex items-center">
-                <span className="w-4 h-4 rounded-full border border-white/20 text-white/40 flex items-center justify-center text-[10px] cursor-help font-mono hover:border-white/40 hover:text-white transition-colors">
+                <span className="w-5 h-5 rounded-full border border-clay-muted/30 text-clay-muted flex items-center justify-center text-xs cursor-help font-mono hover:border-clay-primary hover:text-clay-primary transition-colors bg-[#EFEBF5]">
                   ?
                 </span>
-                <div className="absolute left-1/2 bottom-full mb-2 -translate-x-1/2 hidden group-hover:block w-72 p-3 bg-slate-900 border border-white/10 rounded-xl shadow-2xl text-xs text-white/80 z-20 transition-all duration-200">
-                  <p className="font-semibold text-white mb-1">Audience Levels:</p>
-                  <ul className="space-y-1.5 list-disc pl-3.5">
-                    <li><strong>Beginner</strong>: Pure conceptual tour. Avoids files & syntax entirely. Uses analogies.</li>
-                    <li><strong>Product</strong>: Maps business models & logic flow. Skips low-level helper libraries.</li>
-                    <li><strong>Developer</strong>: Direct codebase details, routing patterns, design trade-offs, and file pointers.</li>
+                <div className="absolute left-1/2 bottom-full mb-3 -translate-x-1/2 hidden group-hover:block w-72 p-4 bg-white border border-black/5 rounded-2xl shadow-clay-card text-xs text-clay-foreground z-20 transition-all duration-200 select-none">
+                  <p className="font-heading font-bold text-clay-primary mb-1.5">Audience Levels:</p>
+                  <ul className="space-y-1.5 list-disc pl-3.5 font-sans font-medium text-clay-muted">
+                    <li><strong>Beginner</strong>: Pure conceptual tour. Avoids syntax. Uses analogies.</li>
+                    <li><strong>Product</strong>: Maps business models & logic flow. Skips helper details.</li>
+                    <li><strong>Developer</strong>: Direct codebase structure, routing, design details.</li>
                   </ul>
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 border-[6px] border-transparent border-t-slate-900" />
                 </div>
               </div>
             </h2>
@@ -320,68 +291,59 @@ export default function UploadPage() {
               onValueChange={(v) => setTechnicalLevel(v as TechnicalLevel)}
               className="space-y-3"
             >
-              {levels.map(({ value, label, description }) => (
-                <label
-                  key={value}
-                  htmlFor={`level-${value}`}
-                  className={`
-                    flex items-start gap-4 rounded-xl border px-5 py-4 cursor-pointer
-                    transition-all duration-150
-                    ${technicalLevel === value
-                      ? "border-[var(--brand)] bg-[var(--brand-dim)]"
-                      : "border-white/8 bg-white/[0.02] hover:border-white/15"}
-                  `}
-                >
-                  <RadioGroupItem
-                    value={value}
-                    id={`level-${value}`}
-                    className="mt-0.5 border-white/20 text-[var(--brand)]"
-                  />
-                  <div>
-                    <p className={`text-sm font-semibold ${technicalLevel === value ? "text-white" : "text-white/70"}`}>
-                      {label}
-                    </p>
-                    <p className="text-xs mt-0.5" style={{ color: "oklch(0.5 0.02 280)" }}>
-                      {description}
-                    </p>
-                  </div>
-                </label>
-              ))}
+              {levels.map(({ value, label, description }) => {
+                const isSelected = technicalLevel === value;
+                return (
+                  <label
+                    key={value}
+                    htmlFor={`level-${value}`}
+                    className={`
+                      flex items-start gap-4 rounded-[24px] px-5 py-4 cursor-pointer
+                      transition-all duration-300 select-none border-2
+                      ${isSelected
+                        ? "border-clay-primary bg-white shadow-clay-card -translate-y-0.5"
+                        : "border-transparent bg-[#EFEBF5] shadow-clay-pressed hover:scale-[1.005]"}
+                    `}
+                  >
+                    <RadioGroupItem
+                      value={value}
+                      id={`level-${value}`}
+                      className="mt-0.5"
+                    />
+                    <div>
+                      <p className={`text-sm font-heading font-bold ${isSelected ? "text-clay-primary" : "text-clay-foreground"}`}>
+                        {label}
+                      </p>
+                      <p className="text-xs font-sans font-medium text-clay-muted mt-0.5 leading-relaxed">
+                        {description}
+                      </p>
+                    </div>
+                  </label>
+                );
+              })}
             </RadioGroup>
           </section>
 
           {/* ── Error ─────────────────────────────────────────── */}
           {error && (
             <div
-              className="flex items-start gap-3 rounded-xl px-4 py-3 text-sm border"
-              style={{
-                background: "oklch(0.577 0.245 27 / 10%)",
-                borderColor: "oklch(0.577 0.245 27 / 30%)",
-                color: "oklch(0.75 0.15 27)",
-              }}
+              className="flex items-start gap-3 rounded-2xl px-5 py-4 text-sm border-2 border-red-500/25 bg-red-500/5 text-red-600 shadow-[inset_1px_1px_2px_rgba(255,255,255,0.6)] font-sans font-bold"
             >
-              <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
+              <AlertCircle className="w-5 h-5 shrink-0" />
               {error}
             </div>
           )}
 
           {/* ── Upload progress ───────────────────────────────── */}
           {uploading && (
-            <div className="space-y-2">
-              <div className="flex justify-between text-xs" style={{ color: "oklch(0.55 0.02 280)" }}>
+            <div className="space-y-2 pt-2">
+              <div className="flex justify-between text-xs font-heading font-bold text-clay-primary">
                 <span>Uploading & analyzing…</span>
                 <span>{progress}%</span>
               </div>
               <Progress
                 id="upload-progress"
                 value={progress}
-                className="h-1.5"
-                style={
-                  {
-                    background: "var(--surface-3)",
-                    "--tw-ring-color": "var(--brand)",
-                  } as React.CSSProperties
-                }
               />
             </div>
           )}
@@ -392,18 +354,17 @@ export default function UploadPage() {
             type="submit"
             disabled={uploading || !file}
             size="lg"
-            className="w-full h-12 rounded-xl font-semibold text-base text-white disabled:opacity-40"
-            style={{ background: uploading || !file ? undefined : "var(--brand)" }}
+            className="w-full h-16 rounded-[20px] font-heading font-black text-lg text-white"
           >
             {uploading ? (
               <>
-                <Loader2 className="mr-2 w-4 h-4 animate-spin" />
+                <Loader2 className="mr-2 w-5 h-5 animate-spin" />
                 Analyzing repository…
               </>
             ) : (
               <>
                 Generate Explanation
-                <Upload className="ml-2 w-4 h-4" />
+                <Upload className="ml-2 w-5 h-5" />
               </>
             )}
           </Button>

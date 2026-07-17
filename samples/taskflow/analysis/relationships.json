@@ -1,0 +1,686 @@
+[
+  {
+    "source": "api/index.js",
+    "relationship": "imports",
+    "target": "../server/server",
+    "evidence": "const app = require('../server/server');"
+  },
+  {
+    "source": "server/middleware/authMiddleware.js",
+    "relationship": "imports",
+    "target": "jsonwebtoken",
+    "evidence": "const jwt = require('jsonwebtoken');"
+  },
+  {
+    "source": "server/models/Task.js",
+    "relationship": "imports",
+    "target": "mongoose",
+    "evidence": "const mongoose = require('mongoose');"
+  },
+  {
+    "source": "server/models/User.js",
+    "relationship": "imports",
+    "target": "mongoose",
+    "evidence": "const mongoose = require('mongoose');"
+  },
+  {
+    "source": "server/routes/auth.js",
+    "relationship": "imports",
+    "target": "express",
+    "evidence": "const express = require('express');"
+  },
+  {
+    "source": "server/routes/auth.js",
+    "relationship": "imports",
+    "target": "bcryptjs",
+    "evidence": "const bcrypt = require('bcryptjs');"
+  },
+  {
+    "source": "server/routes/auth.js",
+    "relationship": "imports",
+    "target": "jsonwebtoken",
+    "evidence": "const jwt = require('jsonwebtoken');"
+  },
+  {
+    "source": "server/routes/auth.js",
+    "relationship": "imports",
+    "target": "../models/User",
+    "evidence": "const User = require('../models/User');"
+  },
+  {
+    "source": "server/routes/auth.js",
+    "relationship": "imports",
+    "target": "../middleware/authMiddleware",
+    "evidence": "router.get('/me', require('../middleware/authMiddleware'), async (req, res) => {"
+  },
+  {
+    "source": "server/routes/auth.js",
+    "relationship": "declares_route",
+    "target": "POST /register",
+    "evidence": "router.post('/register', async (req, res) => {"
+  },
+  {
+    "source": "server/routes/auth.js",
+    "relationship": "declares_route",
+    "target": "POST /login",
+    "evidence": "router.post('/login', async (req, res) => {"
+  },
+  {
+    "source": "server/routes/auth.js",
+    "relationship": "declares_route",
+    "target": "GET /me",
+    "evidence": "router.get('/me', require('../middleware/authMiddleware'), async (req, res) => {"
+  },
+  {
+    "source": "server/routes/tasks.js",
+    "relationship": "imports",
+    "target": "express",
+    "evidence": "const express = require('express');"
+  },
+  {
+    "source": "server/routes/tasks.js",
+    "relationship": "imports",
+    "target": "../models/Task",
+    "evidence": "const Task = require('../models/Task');"
+  },
+  {
+    "source": "server/routes/tasks.js",
+    "relationship": "imports",
+    "target": "../middleware/authMiddleware",
+    "evidence": "const auth = require('../middleware/authMiddleware');"
+  },
+  {
+    "source": "server/routes/tasks.js",
+    "relationship": "declares_route",
+    "target": "GET /",
+    "evidence": "router.get('/', auth, async (req, res) => {"
+  },
+  {
+    "source": "server/routes/tasks.js",
+    "relationship": "declares_route",
+    "target": "POST /",
+    "evidence": "router.post('/', auth, async (req, res) => {"
+  },
+  {
+    "source": "server/routes/tasks.js",
+    "relationship": "declares_route",
+    "target": "PUT /:id",
+    "evidence": "router.put('/:id', auth, async (req, res) => {"
+  },
+  {
+    "source": "server/routes/tasks.js",
+    "relationship": "declares_route",
+    "target": "DELETE /:id",
+    "evidence": "router.delete('/:id', auth, async (req, res) => {"
+  },
+  {
+    "source": "server/routes/users.js",
+    "relationship": "imports",
+    "target": "express",
+    "evidence": "const express = require('express');"
+  },
+  {
+    "source": "server/routes/users.js",
+    "relationship": "imports",
+    "target": "../models/User",
+    "evidence": "const User = require('../models/User');"
+  },
+  {
+    "source": "server/routes/users.js",
+    "relationship": "imports",
+    "target": "../middleware/authMiddleware",
+    "evidence": "const auth = require('../middleware/authMiddleware');"
+  },
+  {
+    "source": "server/routes/users.js",
+    "relationship": "imports",
+    "target": "bcryptjs",
+    "evidence": "const bcrypt = require('bcryptjs');"
+  },
+  {
+    "source": "server/routes/users.js",
+    "relationship": "imports",
+    "target": "../models/Task",
+    "evidence": "const Task = require('../models/Task');"
+  },
+  {
+    "source": "server/routes/users.js",
+    "relationship": "declares_route",
+    "target": "GET /",
+    "evidence": "router.get('/', auth, async (req, res) => {"
+  },
+  {
+    "source": "server/routes/users.js",
+    "relationship": "declares_route",
+    "target": "POST /",
+    "evidence": "router.post('/', auth, async (req, res) => {"
+  },
+  {
+    "source": "server/routes/users.js",
+    "relationship": "declares_route",
+    "target": "DELETE /:id",
+    "evidence": "router.delete('/:id', auth, async (req, res) => {"
+  },
+  {
+    "source": "server/seed.js",
+    "relationship": "imports",
+    "target": "dotenv",
+    "evidence": "require('dotenv').config();"
+  },
+  {
+    "source": "server/seed.js",
+    "relationship": "imports",
+    "target": "mongoose",
+    "evidence": "const mongoose = require('mongoose');"
+  },
+  {
+    "source": "server/seed.js",
+    "relationship": "imports",
+    "target": "bcryptjs",
+    "evidence": "const bcrypt = require('bcryptjs');"
+  },
+  {
+    "source": "server/seed.js",
+    "relationship": "imports",
+    "target": "./models/User",
+    "evidence": "const User = require('./models/User');"
+  },
+  {
+    "source": "server/seed.js",
+    "relationship": "imports",
+    "target": "./models/Task",
+    "evidence": "const Task = require('./models/Task');"
+  },
+  {
+    "source": "server/seed.js",
+    "relationship": "imports",
+    "target": "mongodb-memory-server",
+    "evidence": "const { MongoMemoryServer } = require('mongodb-memory-server');"
+  },
+  {
+    "source": "server/server.js",
+    "relationship": "imports",
+    "target": "dotenv",
+    "evidence": "require('dotenv').config();"
+  },
+  {
+    "source": "server/server.js",
+    "relationship": "imports",
+    "target": "express",
+    "evidence": "const express = require('express');"
+  },
+  {
+    "source": "server/server.js",
+    "relationship": "imports",
+    "target": "mongoose",
+    "evidence": "const mongoose = require('mongoose');"
+  },
+  {
+    "source": "server/server.js",
+    "relationship": "imports",
+    "target": "cors",
+    "evidence": "const cors = require('cors');"
+  },
+  {
+    "source": "server/server.js",
+    "relationship": "imports",
+    "target": "dns",
+    "evidence": "const dns = require('dns');"
+  },
+  {
+    "source": "server/server.js",
+    "relationship": "imports",
+    "target": "./routes/auth",
+    "evidence": "app.use('/api/auth', require('./routes/auth'));"
+  },
+  {
+    "source": "server/server.js",
+    "relationship": "imports",
+    "target": "./routes/tasks",
+    "evidence": "app.use('/api/tasks', require('./routes/tasks'));"
+  },
+  {
+    "source": "server/server.js",
+    "relationship": "imports",
+    "target": "./routes/users",
+    "evidence": "app.use('/api/users', require('./routes/users'));"
+  },
+  {
+    "source": "server/server.js",
+    "relationship": "declares_route",
+    "target": "USE /api/auth",
+    "evidence": "app.use('/api/auth', require('./routes/auth'));"
+  },
+  {
+    "source": "server/server.js",
+    "relationship": "declares_route",
+    "target": "USE /api/tasks",
+    "evidence": "app.use('/api/tasks', require('./routes/tasks'));"
+  },
+  {
+    "source": "server/server.js",
+    "relationship": "declares_route",
+    "target": "USE /api/users",
+    "evidence": "app.use('/api/users', require('./routes/users'));"
+  },
+  {
+    "source": "server/server.js",
+    "relationship": "declares_route",
+    "target": "GET /api/health",
+    "evidence": "app.get('/api/health', (req, res) => res.json({ status: 'ok' }));"
+  },
+  {
+    "source": "src/App.jsx",
+    "relationship": "imports",
+    "target": "react",
+    "evidence": "import React, { useState, useEffect } from 'react';"
+  },
+  {
+    "source": "src/App.jsx",
+    "relationship": "imports",
+    "target": "react-router-dom",
+    "evidence": "import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';"
+  },
+  {
+    "source": "src/App.jsx",
+    "relationship": "imports",
+    "target": "./pages/Auth",
+    "evidence": "import Auth from './pages/Auth';"
+  },
+  {
+    "source": "src/App.jsx",
+    "relationship": "imports",
+    "target": "./pages/Dashboard",
+    "evidence": "import Dashboard from './pages/Dashboard';"
+  },
+  {
+    "source": "src/App.jsx",
+    "relationship": "imports",
+    "target": "axios",
+    "evidence": "import axios from 'axios';"
+  },
+  {
+    "source": "src/App.jsx",
+    "relationship": "calls_api",
+    "target": "/api/auth/me",
+    "evidence": "axios.get('/api/auth/me').catch(() => {"
+  },
+  {
+    "source": "src/components/Avatar.jsx",
+    "relationship": "imports",
+    "target": "react",
+    "evidence": "import React from 'react'"
+  },
+  {
+    "source": "src/components/Avatar.jsx",
+    "relationship": "imports",
+    "target": "../context/TaskContext",
+    "evidence": "import { useTasks } from '../context/TaskContext'"
+  },
+  {
+    "source": "src/components/Header.jsx",
+    "relationship": "imports",
+    "target": "react",
+    "evidence": "import React, { useState } from 'react'"
+  },
+  {
+    "source": "src/components/Header.jsx",
+    "relationship": "imports",
+    "target": "framer-motion",
+    "evidence": "import { motion } from 'framer-motion'"
+  },
+  {
+    "source": "src/components/Header.jsx",
+    "relationship": "imports",
+    "target": "lucide-react",
+    "evidence": "import { Search, SlidersHorizontal, Plus, X, Layers, LogOut, Users, Sparkles } from 'lucide-react'"
+  },
+  {
+    "source": "src/components/Header.jsx",
+    "relationship": "imports",
+    "target": "../context/TaskContext",
+    "evidence": "import { useTasks } from '../context/TaskContext'"
+  },
+  {
+    "source": "src/components/Header.jsx",
+    "relationship": "imports",
+    "target": "./TeamModal",
+    "evidence": "import TeamModal from './TeamModal'"
+  },
+  {
+    "source": "src/components/KanbanBoard.jsx",
+    "relationship": "imports",
+    "target": "react",
+    "evidence": "import React, { useState } from 'react'"
+  },
+  {
+    "source": "src/components/KanbanBoard.jsx",
+    "relationship": "imports",
+    "target": "@dnd-kit/core",
+    "evidence": "import { DndContext, DragOverlay, PointerSensor, useSensor, useSensors, closestCorners } from '@dnd-kit/core'"
+  },
+  {
+    "source": "src/components/KanbanBoard.jsx",
+    "relationship": "imports",
+    "target": "./KanbanColumn",
+    "evidence": "import KanbanColumn from './KanbanColumn'"
+  },
+  {
+    "source": "src/components/KanbanBoard.jsx",
+    "relationship": "imports",
+    "target": "./TaskCard",
+    "evidence": "import TaskCard from './TaskCard'"
+  },
+  {
+    "source": "src/components/KanbanBoard.jsx",
+    "relationship": "imports",
+    "target": "../context/TaskContext",
+    "evidence": "import { useTasks } from '../context/TaskContext'"
+  },
+  {
+    "source": "src/components/KanbanBoard.jsx",
+    "relationship": "imports",
+    "target": "../data/mockData",
+    "evidence": "import { COLUMNS } from '../data/mockData'"
+  },
+  {
+    "source": "src/components/KanbanColumn.jsx",
+    "relationship": "imports",
+    "target": "react",
+    "evidence": "import React from 'react'"
+  },
+  {
+    "source": "src/components/KanbanColumn.jsx",
+    "relationship": "imports",
+    "target": "framer-motion",
+    "evidence": "import { motion, AnimatePresence } from 'framer-motion'"
+  },
+  {
+    "source": "src/components/KanbanColumn.jsx",
+    "relationship": "imports",
+    "target": "@dnd-kit/core",
+    "evidence": "import { useDroppable } from '@dnd-kit/core'"
+  },
+  {
+    "source": "src/components/KanbanColumn.jsx",
+    "relationship": "imports",
+    "target": "@dnd-kit/sortable",
+    "evidence": "import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'"
+  },
+  {
+    "source": "src/components/KanbanColumn.jsx",
+    "relationship": "imports",
+    "target": "lucide-react",
+    "evidence": "import { Plus } from 'lucide-react'"
+  },
+  {
+    "source": "src/components/KanbanColumn.jsx",
+    "relationship": "imports",
+    "target": "./TaskCard",
+    "evidence": "import TaskCard from './TaskCard'"
+  },
+  {
+    "source": "src/components/KanbanColumn.jsx",
+    "relationship": "imports",
+    "target": "../context/TaskContext",
+    "evidence": "import { useTasks } from '../context/TaskContext'"
+  },
+  {
+    "source": "src/components/TaskCard.jsx",
+    "relationship": "imports",
+    "target": "react",
+    "evidence": "import React from 'react'"
+  },
+  {
+    "source": "src/components/TaskCard.jsx",
+    "relationship": "imports",
+    "target": "framer-motion",
+    "evidence": "import { motion } from 'framer-motion'"
+  },
+  {
+    "source": "src/components/TaskCard.jsx",
+    "relationship": "imports",
+    "target": "@dnd-kit/sortable",
+    "evidence": "import { useSortable } from '@dnd-kit/sortable'"
+  },
+  {
+    "source": "src/components/TaskCard.jsx",
+    "relationship": "imports",
+    "target": "@dnd-kit/utilities",
+    "evidence": "import { CSS } from '@dnd-kit/utilities'"
+  },
+  {
+    "source": "src/components/TaskCard.jsx",
+    "relationship": "imports",
+    "target": "lucide-react",
+    "evidence": "import { Calendar, GripVertical, Trash2, Pencil, Eye, Flag } from 'lucide-react'"
+  },
+  {
+    "source": "src/components/TaskCard.jsx",
+    "relationship": "imports",
+    "target": "./Avatar",
+    "evidence": "import Avatar from './Avatar'"
+  },
+  {
+    "source": "src/components/TaskCard.jsx",
+    "relationship": "imports",
+    "target": "../utils/helpers",
+    "evidence": "import { formatDeadline, getDeadlineStatus, getPriorityConfig, TAG_COLORS } from '../utils/helpers'"
+  },
+  {
+    "source": "src/components/TaskCard.jsx",
+    "relationship": "imports",
+    "target": "../context/TaskContext",
+    "evidence": "import { useTasks } from '../context/TaskContext'"
+  },
+  {
+    "source": "src/components/TaskModal.jsx",
+    "relationship": "imports",
+    "target": "react",
+    "evidence": "import React, { useState, useEffect } from 'react'"
+  },
+  {
+    "source": "src/components/TaskModal.jsx",
+    "relationship": "imports",
+    "target": "framer-motion",
+    "evidence": "import { motion, AnimatePresence } from 'framer-motion'"
+  },
+  {
+    "source": "src/components/TaskModal.jsx",
+    "relationship": "imports",
+    "target": "lucide-react",
+    "evidence": "import { X, ChevronDown, Trash2, Pencil } from 'lucide-react'"
+  },
+  {
+    "source": "src/components/TaskModal.jsx",
+    "relationship": "imports",
+    "target": "../context/TaskContext",
+    "evidence": "import { useTasks } from '../context/TaskContext'"
+  },
+  {
+    "source": "src/components/TaskModal.jsx",
+    "relationship": "imports",
+    "target": "../data/mockData",
+    "evidence": "import { COLUMNS, PRIORITIES } from '../data/mockData'"
+  },
+  {
+    "source": "src/components/TaskModal.jsx",
+    "relationship": "imports",
+    "target": "./Avatar",
+    "evidence": "import Avatar from './Avatar'"
+  },
+  {
+    "source": "src/components/TeamModal.jsx",
+    "relationship": "imports",
+    "target": "react",
+    "evidence": "import React, { useState } from 'react'"
+  },
+  {
+    "source": "src/components/TeamModal.jsx",
+    "relationship": "imports",
+    "target": "framer-motion",
+    "evidence": "import { motion, AnimatePresence } from 'framer-motion'"
+  },
+  {
+    "source": "src/components/TeamModal.jsx",
+    "relationship": "imports",
+    "target": "lucide-react",
+    "evidence": "import { X, Trash2, UserPlus, ArrowLeft } from 'lucide-react'"
+  },
+  {
+    "source": "src/components/TeamModal.jsx",
+    "relationship": "imports",
+    "target": "../context/TaskContext",
+    "evidence": "import { useTasks } from '../context/TaskContext'"
+  },
+  {
+    "source": "src/components/TeamModal.jsx",
+    "relationship": "imports",
+    "target": "./Avatar",
+    "evidence": "import Avatar from './Avatar'"
+  },
+  {
+    "source": "src/context/TaskContext.jsx",
+    "relationship": "imports",
+    "target": "react",
+    "evidence": "import React, { createContext, useContext, useReducer, useCallback, useEffect, useState } from 'react'"
+  },
+  {
+    "source": "src/context/TaskContext.jsx",
+    "relationship": "imports",
+    "target": "axios",
+    "evidence": "import axios from 'axios'"
+  },
+  {
+    "source": "src/context/TaskContext.jsx",
+    "relationship": "imports",
+    "target": "../data/mockData",
+    "evidence": "import { COLUMNS } from '../data/mockData'"
+  },
+  {
+    "source": "src/context/TaskContext.jsx",
+    "relationship": "calls_api",
+    "target": "/api/tasks",
+    "evidence": "axios.get('/api/tasks'),"
+  },
+  {
+    "source": "src/context/TaskContext.jsx",
+    "relationship": "calls_api",
+    "target": "/api/users",
+    "evidence": "axios.get('/api/users')"
+  },
+  {
+    "source": "src/context/TaskContext.jsx",
+    "relationship": "calls_api",
+    "target": "/api/tasks/${id}",
+    "evidence": "const res = await axios.put(`/api/tasks/${id}`, rest)"
+  },
+  {
+    "source": "src/context/TaskContext.jsx",
+    "relationship": "calls_api",
+    "target": "/api/tasks/${taskId}",
+    "evidence": "await axios.put(`/api/tasks/${taskId}`, { status: newStatus })"
+  },
+  {
+    "source": "src/context/TaskContext.jsx",
+    "relationship": "calls_api",
+    "target": "/api/users/${userId}",
+    "evidence": "await axios.delete(`/api/users/${userId}`)"
+  },
+  {
+    "source": "src/main.jsx",
+    "relationship": "imports",
+    "target": "react",
+    "evidence": "import React from 'react'"
+  },
+  {
+    "source": "src/main.jsx",
+    "relationship": "imports",
+    "target": "react-dom/client",
+    "evidence": "import ReactDOM from 'react-dom/client'"
+  },
+  {
+    "source": "src/main.jsx",
+    "relationship": "imports",
+    "target": "./App.jsx",
+    "evidence": "import App from './App.jsx'"
+  },
+  {
+    "source": "src/pages/Auth.jsx",
+    "relationship": "imports",
+    "target": "react",
+    "evidence": "import React, { useState } from 'react'"
+  },
+  {
+    "source": "src/pages/Auth.jsx",
+    "relationship": "imports",
+    "target": "react-router-dom",
+    "evidence": "import { useNavigate } from 'react-router-dom'"
+  },
+  {
+    "source": "src/pages/Auth.jsx",
+    "relationship": "imports",
+    "target": "axios",
+    "evidence": "import axios from 'axios'"
+  },
+  {
+    "source": "src/pages/Auth.jsx",
+    "relationship": "imports",
+    "target": "lucide-react",
+    "evidence": "import { Layers, ArrowRight, Sparkles } from 'lucide-react'"
+  },
+  {
+    "source": "src/pages/Dashboard.jsx",
+    "relationship": "imports",
+    "target": "react",
+    "evidence": "import React from 'react';"
+  },
+  {
+    "source": "src/pages/Dashboard.jsx",
+    "relationship": "imports",
+    "target": "../components/Header",
+    "evidence": "import Header from '../components/Header';"
+  },
+  {
+    "source": "src/pages/Dashboard.jsx",
+    "relationship": "imports",
+    "target": "../components/KanbanBoard",
+    "evidence": "import KanbanBoard from '../components/KanbanBoard';"
+  },
+  {
+    "source": "src/pages/Dashboard.jsx",
+    "relationship": "imports",
+    "target": "../components/TaskModal",
+    "evidence": "import TaskModal from '../components/TaskModal';"
+  },
+  {
+    "source": "src/pages/Dashboard.jsx",
+    "relationship": "imports",
+    "target": "../context/TaskContext",
+    "evidence": "import { TaskProvider } from '../context/TaskContext';"
+  },
+  {
+    "source": "src/utils/helpers.js",
+    "relationship": "imports",
+    "target": "date-fns",
+    "evidence": "import { format, isPast, isToday, isTomorrow, differenceInDays } from 'date-fns'"
+  },
+  {
+    "source": "tailwind.config.js",
+    "relationship": "imports",
+    "target": "tailwindcss",
+    "evidence": "/** @type {import('tailwindcss').Config} */"
+  },
+  {
+    "source": "vite.config.js",
+    "relationship": "imports",
+    "target": "vite",
+    "evidence": "import { defineConfig } from 'vite'"
+  },
+  {
+    "source": "vite.config.js",
+    "relationship": "imports",
+    "target": "@vitejs/plugin-react",
+    "evidence": "import react from '@vitejs/plugin-react'"
+  }
+]
