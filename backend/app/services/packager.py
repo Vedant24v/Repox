@@ -64,9 +64,9 @@ def package_output(
         logger.error(f"Error writing validation_report.json: {e}")
 
     # 3. Create top-level README.md
-    readme_content = f"""# RepoTutor Explanation Report
+    readme_content = f"""# Repox Explanation Report
 
-Welcome to the RepoTutor generated documentation for Project `{project_id}`.
+Welcome to the Repox generated documentation for Project `{project_id}`.
 
 This documentation folder contains comprehensive, structured explanations of the repository's codebase, architecture, components, and workflows.
 

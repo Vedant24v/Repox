@@ -1,6 +1,6 @@
 """
 diagrams.py — Generate Mermaid definitions from structured analysis.
-Runs Stage 9 of the RepoTutor explanation pipeline.
+Runs Stage 9 of the Repox explanation pipeline.
 All diagrams are generated using deterministic templates/logic to ensure syntax correctness.
 """
 from __future__ import annotations
