@@ -93,13 +93,21 @@ def _compact_tech(tech: dict) -> str:
     return "\n".join(lines) or "No tech data."
 
 
+# Global semaphore to limit total concurrent LLM calls across the pipeline
+_LLM_SEMAPHORE = asyncio.Semaphore(2)
+_LLM_CALL_DELAY = 1.5  # seconds between calls to stay under Groq RPM
+
+
 async def _llm_async(system_prompt: str, user_prompt: str) -> str:
-    """Run sync call_llm inside the default thread-pool executor."""
-    loop = asyncio.get_event_loop()
-    return await loop.run_in_executor(
-        None,
-        lambda: call_llm(system_prompt, user_prompt, json_mode=False),
-    )
+    """Run sync call_llm inside the default thread-pool executor, with global rate limiting."""
+    async with _LLM_SEMAPHORE:
+        loop = asyncio.get_event_loop()
+        result = await loop.run_in_executor(
+            None,
+            lambda: call_llm(system_prompt, user_prompt, json_mode=False),
+        )
+        await asyncio.sleep(_LLM_CALL_DELAY)
+        return result
 
 
 # ── Section 1: Start Here ────────────────────────────────────────────────────
@@ -591,48 +599,49 @@ async def generate_all_sections(
             stage_callback(f"generating_explanations ({idx}/9)")
         logger.info("Generating section %d/9: %s", idx, name)
 
+    async def _safe_generate(idx: int, name: str, coro) -> str:
+        """Run a section generator with error handling so one failure doesn't kill the pipeline."""
+        try:
+            _notify(idx, name)
+            return await coro
+        except Exception as exc:
+            logger.error("Section %s failed: %s", name, exc)
+            return f"# {name.replace('_', ' ').title()}\n\n> ⚠️ This section could not be generated due to an error: {exc}\n"
+
     # Pre-read files needed by section 8 (how_to_run)
     readme = _read_file_safe(repo_root / "README.md") or _read_file_safe(repo_root / "readme.md")
     package_json = _read_file_safe(repo_root / "package.json")
     requirements = _read_file_safe(repo_root / "requirements.txt")
     dockerfiles = _find_dockerfiles(repo_root)
 
-    # ── Batch 1: sections 1-3 (independent) ──────────────────────────────
-    _notify(1, "start_here, product_overview, tech_stack")
-    batch1 = await asyncio.gather(
-        generate_start_here(plan=plan, tech=tech, level_config=level_config, project_id=project_id),
-        generate_product_overview(product_description=product_description, tech=tech, file_summaries=file_summaries, level_config=level_config, project_id=project_id),
-        generate_tech_stack_explanation(tech=tech, file_summaries=file_summaries, level_config=level_config, project_id=project_id),
-    )
-    results["01_start_here"] = batch1[0]
-    results["02_product_overview"] = batch1[1]
-    results["03_tech_stack"] = batch1[2]
+    # Generate sections sequentially — reliable under Groq free-tier rate limits
+    results["01_start_here"] = await _safe_generate(1, "start_here",
+        generate_start_here(plan=plan, tech=tech, level_config=level_config, project_id=project_id))
 
-    # ── Batch 2: sections 4-6 (independent) ──────────────────────────────
-    _notify(4, "architecture, component_guide, main_user_flow")
-    await asyncio.sleep(2)  # courtesy pause between batches
-    batch2 = await asyncio.gather(
-        generate_architecture(tech=tech, relationships=relationships, file_summaries=file_summaries, level_config=level_config, project_id=project_id),
-        generate_component_guide(file_summaries=file_summaries, relationships=relationships, level_config=level_config, project_id=project_id),
-        generate_main_user_flow(important_features=important_features, relationships=relationships, file_summaries=file_summaries, level_config=level_config, project_id=project_id),
-    )
-    results["04_architecture"] = batch2[0]
-    results["05_component_guide"] = batch2[1]
-    results["06_main_user_flow"] = batch2[2]
+    results["02_product_overview"] = await _safe_generate(2, "product_overview",
+        generate_product_overview(product_description=product_description, tech=tech, file_summaries=file_summaries, level_config=level_config, project_id=project_id))
 
-    # ── Batch 3: sections 7-9 (independent) ──────────────────────────────
-    _notify(7, "repo_guide, how_to_run, unknowns_and_risks")
-    await asyncio.sleep(2)  # courtesy pause between batches
+    results["03_tech_stack"] = await _safe_generate(3, "tech_stack",
+        generate_tech_stack_explanation(tech=tech, file_summaries=file_summaries, level_config=level_config, project_id=project_id))
+
+    results["04_architecture"] = await _safe_generate(4, "architecture",
+        generate_architecture(tech=tech, relationships=relationships, file_summaries=file_summaries, level_config=level_config, project_id=project_id))
+
+    results["05_component_guide"] = await _safe_generate(5, "component_guide",
+        generate_component_guide(file_summaries=file_summaries, relationships=relationships, level_config=level_config, project_id=project_id))
+
+    results["06_main_user_flow"] = await _safe_generate(6, "main_user_flow",
+        generate_main_user_flow(important_features=important_features, relationships=relationships, file_summaries=file_summaries, level_config=level_config, project_id=project_id))
+
+    results["07_repo_guide"] = await _safe_generate(7, "repo_guide",
+        generate_repo_guide(inventory=inventory, important_files=important_files, level_config=level_config, project_id=project_id))
+
+    results["08_how_to_run"] = await _safe_generate(8, "how_to_run",
+        generate_how_to_run(readme_content=readme, package_json=package_json, requirements_txt=requirements, dockerfiles=dockerfiles, level_config=level_config, project_id=project_id))
+
     all_analysis = {"plan": plan, "tech": tech}
-    batch3 = await asyncio.gather(
-        generate_repo_guide(inventory=inventory, important_files=important_files, level_config=level_config, project_id=project_id),
-        generate_how_to_run(readme_content=readme, package_json=package_json, requirements_txt=requirements, dockerfiles=dockerfiles, level_config=level_config, project_id=project_id),
-        generate_unknowns_and_risks(all_analysis_json=all_analysis, secrets_report=secrets_report, level_config=level_config, project_id=project_id),
-    )
-    results["07_repo_guide"] = batch3[0]
-    results["08_how_to_run"] = batch3[1]
-    results["09_unknowns_and_risks"] = batch3[2]
+    results["09_unknowns_and_risks"] = await _safe_generate(9, "unknowns_and_risks",
+        generate_unknowns_and_risks(all_analysis_json=all_analysis, secrets_report=secrets_report, level_config=level_config, project_id=project_id))
 
     logger.info("All 9 sections generated for project %s", project_id)
     return results
-
