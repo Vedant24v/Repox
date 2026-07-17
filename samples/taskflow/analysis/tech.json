@@ -26,11 +26,11 @@
   ],
   "testing_frameworks": [],
   "external_apis_detected": [
-    "/api/tasks/${id}",
     "/api/users/${userId}",
-    "/api/users",
-    "/api/tasks",
     "/api/auth/me",
-    "/api/tasks/${taskId}"
+    "/api/users",
+    "/api/tasks/${taskId}",
+    "/api/tasks",
+    "/api/tasks/${id}"
   ]
 }
