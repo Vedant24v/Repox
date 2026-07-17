@@ -7,9 +7,9 @@ Repox turns an uploaded repository ZIP into a tailored, evidence-graded codebase
 | Deliverable | Location |
 | --- | --- |
 | Source repository | [github.com/Vedant24v/Repox](https://github.com/Vedant24v/Repox) |
-| Frontend deployment | Add the Vercel production URL after deployment |
-| Backend deployment | Add the Render service URL after deployment |
-| User-journey recording | Add the Loom or video URL after recording |
+| Frontend deployment | [repox-alpha.vercel.app](https://repox-alpha.vercel.app) |
+| Backend deployment | [repox-api.onrender.com](https://repox-api.onrender.com/health) |
+| User-journey recording | _Add the Loom or video URL after recording_ |
 | Sample raw analysis | [`samples/taskflow/analysis/`](samples/taskflow/analysis/) and [`samples/indus-mind/analysis/`](samples/indus-mind/analysis/) |
 | Sample explanation ZIPs | [`samples/taskflow/repotutor_output.zip`](samples/taskflow/repotutor_output.zip) and [`samples/indus-mind/repotutor_output.zip`](samples/indus-mind/repotutor_output.zip) |
 
