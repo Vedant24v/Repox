@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { GitBranch, Sparkles, Layers, ArrowRight, Code2, Users, Zap } from "lucide-react";
+import { Layers, ArrowRight, Code2, Users, Zap } from "lucide-react";
 
 export const metadata = {
-  title: "RepoTutor — Understand Any Codebase Instantly",
+  title: "Repox — Understand Any Codebase Instantly",
   description:
     "Upload a repository ZIP and get a beautiful, personalized explanation of every key part — built for founders, PMs, and devs alike.",
 };
@@ -57,7 +57,7 @@ export default function HomePage() {
             <Code2 className="w-5 h-5 text-white" />
           </div>
           <span className="font-heading font-black text-xl text-clay-foreground tracking-tight">
-            RepoTutor
+            Repox
           </span>
         </div>
         <Link href="/upload">
@@ -72,11 +72,7 @@ export default function HomePage() {
 
       {/* ── Hero ─────────────────────────────────────────────────── */}
       <section className="flex-1 flex flex-col items-center justify-center px-6 py-20 text-center relative overflow-hidden">
-        {/* Sparkles Badge */}
-        <div className="animate-fade-up inline-flex items-center gap-2 rounded-full px-5 py-2 text-xs font-heading font-bold mb-8 bg-[#7C3AED]/10 border border-[#7C3AED]/10 text-clay-primary shadow-[inset_1px_1px_2px_rgba(255,255,255,0.6)]">
-          <Sparkles className="w-3.5 h-3.5 text-clay-secondary animate-pulse" />
-          AI-powered codebase tours
-        </div>
+
 
         {/* Headline */}
         <h1 className="animate-fade-up delay-100 font-heading font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-clay-foreground leading-[1.1] max-w-5xl mb-8">
@@ -88,7 +84,7 @@ export default function HomePage() {
 
         {/* Subtitle */}
         <p className="animate-fade-up delay-200 text-lg sm:text-xl max-w-2xl mb-12 leading-relaxed text-clay-muted font-sans font-medium">
-          Drop a repository ZIP and RepoTutor generates a personalized, visual
+          Drop a repository ZIP and Repox generates a personalized, visual
           explanation — for founders, product managers, and developers alike.
         </p>
 
@@ -104,14 +100,7 @@ export default function HomePage() {
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>
-          <Button
-            variant="outline"
-            size="lg"
-            className="w-full sm:w-auto rounded-[20px] px-8 text-base text-clay-primary border-clay-primary/20 hover:border-clay-primary"
-          >
-            <GitBranch className="mr-2 w-5 h-5 text-clay-secondary" />
-            See an example
-          </Button>
+
         </div>
 
         {/* Floating code card */}
@@ -171,7 +160,7 @@ export default function HomePage() {
 
       {/* ── Footer ───────────────────────────────────────────────── */}
       <footer className="text-center text-xs font-sans font-semibold py-8 border-t border-black/5 bg-white/10 text-clay-muted">
-        © 2026 RepoTutor · Built for curious humans
+        © 2026 Repox · Built for curious humans
       </footer>
     </main>
   );

@@ -266,7 +266,7 @@ export default function ResultsPage() {
             <div className="w-7 h-7 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#A78BFA] to-[#7C3AED] shadow-clay-button">
               <Code2 className="w-3.5 h-3.5 text-white" />
             </div>
-            <span className="font-heading font-black text-clay-foreground tracking-tight">RepoTutor Results</span>
+            <span className="font-heading font-black text-clay-foreground tracking-tight">Repox Results</span>
           </div>
         </div>
 

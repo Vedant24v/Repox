@@ -161,7 +161,7 @@ export default function AnalyzePage() {
           <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#A78BFA] to-[#7C3AED] shadow-clay-button">
             <Code2 className="w-4 h-4 text-white" />
           </div>
-          <span className="font-heading font-black text-clay-foreground tracking-tight">RepoTutor</span>
+          <span className="font-heading font-black text-clay-foreground tracking-tight">Repox</span>
         </div>
       </nav>
 

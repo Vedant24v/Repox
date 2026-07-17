@@ -15,7 +15,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "RepoTutor — Understand Any Codebase Instantly",
+  title: "Repox — Understand Any Codebase Instantly",
   description:
     "Upload your repository ZIP and get a personalized, visual explanation of the codebase — no technical background required.",
   keywords: ["repository", "codebase", "explanation", "non-technical", "code tour"],
