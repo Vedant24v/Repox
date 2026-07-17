@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Layers, ArrowRight, Code2, Users, Zap } from "lucide-react";
+import { Sparkles, Layers, ArrowRight, Code2, Users, Zap } from "lucide-react";
 
 export const metadata = {
   title: "Repox — Understand Any Codebase Instantly",
